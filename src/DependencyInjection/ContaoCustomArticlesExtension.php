@@ -1,6 +1,6 @@
 <?php
 
-namespace Rwd\CustomArticlesBundle\DependencyInjection;
+namespace Rwd\ContaoCustomArticlesBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

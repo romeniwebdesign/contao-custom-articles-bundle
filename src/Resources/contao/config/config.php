@@ -13,7 +13,7 @@
  */
 
 if (TL_MODE == 'BE') {
-	$GLOBALS['TL_CSS'][] = '/bundles/rwd/extend-backend.css';
+	$GLOBALS['TL_CSS'][] = '/bundles/contaocustomarticles/assets/extend-backend.css';
 }
 
 /**
