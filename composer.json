@@ -1,5 +1,5 @@
 {
-  "name":"RomeniWebDesign/contao-custom-articles-bundle",
+  "name":"romeniwebdesign/contao-custom-articles-bundle",
   "type":"contao-bundle",
   "description":"Custom Article for Contao Open Source CMS",
   "license": "LGPL-3.0-or-later",
