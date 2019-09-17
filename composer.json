@@ -1,0 +1,37 @@
+{
+  "name":"RomeniWebDesign/contao-custom-articles-bundle",
+  "type":"contao-bundle",
+  "description":"Custom Article for Contao Open Source CMS",
+  "license": "LGPL-3.0-or-later",
+  "authors":[
+    {
+      "name":"Christian Romeni",
+      "homepage":"http://romeni.eu"
+    }
+  ],
+  "keywords":[
+    "contao",
+    "articles",
+    "style"
+  ],
+  "require": {
+    "php": "^5.6 || ^7.0",
+    "contao/core-bundle": "4.4.*",
+    "symfony/framework-bundle": "^3.3"
+  },
+  "conflict": {
+    "contao/core": "*",
+    "contao/manager-plugin": "<2.0 || >=3.0"
+  },
+  "require-dev": {
+    "contao/manager-plugin": "^2.7",
+  },
+  "autoload": {
+    "psr-4": {
+      "Rwd\\ContaoCustomArticlesBundle": "src"
+    }
+  },
+  "extra": {
+    "contao-manager-plugin": "Rwd\\ContaoCustomArticlesBundle\\ContaoManager\\Plugin"
+  }
+}

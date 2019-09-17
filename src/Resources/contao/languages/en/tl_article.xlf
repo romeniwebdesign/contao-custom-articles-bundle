@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.1">
+	<file datatype="php" original="system/modules/c-customarticles/languages/de/tl_articles.php" source-language="en">
+    <body>
+      <trans-unit id="tl_article.article_width.0">
+        <source>Article width</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_width.1">
+        <source>Define the width of the article.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.article_color.0">
+        <source>Article Backgroundcolor</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_color.1">
+        <source>Define the Backgroundcolor of the article.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.article_image.0">
+        <source>Article Backgroundimage</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_image.1">
+        <source>Define the Backgroundimage of the article.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.article_image_repeat.0">
+        <source>Article Backgroundimage repeat</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_image_repeat.1">
+        <source>In witch direction should the background image repeat?</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.article_image_position.0">
+        <source>Article Backgroundimage position</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_image_position.1">
+        <source>Define the Backgroundimage position.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.article_image_cover.0">
+        <source>Cover Image</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_image_cover.1">
+        <source>Should the background image be used as cover image?</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.article_image_fixed.0">
+        <source>Fixed Backgroundimage</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_image_fixed.1">
+        <source>Should the Backgroundimage Cover be fixed?</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.article_minheight.0">
+        <source>Article min. height</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_minheight.1">
+        <source>Define the min. height of the article.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.inner_article_width.0">
+        <source>Article content width</source>
+      </trans-unit>
+      <trans-unit id="tl_article.inner_article_width.1">
+        <source>Define the width of the article content.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.inner_article_minheight.0">
+        <source>Article content min. height</source>
+      </trans-unit>
+      <trans-unit id="tl_article.inner_article_minheight.1">
+        <source>Define the min. height of the article content</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.inner_article_color.0">
+        <source>Article content Backgroundcolor</source>
+      </trans-unit>
+      <trans-unit id="tl_article.inner_article_color.1">
+        <source>Define the Backgroundcolor of the article content.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.inner_article_position.0">
+        <source>Article content position</source>
+      </trans-unit>
+      <trans-unit id="tl_article.inner_article_position.1">
+        <source>Define the position of the article content.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.inner_article_space.0">
+        <source>Space from the border</source>
+      </trans-unit>
+      <trans-unit id="tl_article.inner_article_space.1">
+        <source>Define if the content hast spacing to the top or to the bottom</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.inner_article_overflow.0">
+        <source>Article content overflow</source>
+      </trans-unit>
+      <trans-unit id="tl_article.inner_article_overflow.1">
+        <source>Define if the content of the article content should overflow.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_article.article_hidden.0">
+        <source>Hide in layout:</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_hidden.1">
+        <source>Hides this content in the selected layout.</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_visible.0">
+        <source>Show only in layout:</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_visible.1">
+        <source>Show this content only in the selected layout.</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_visible.visible-xs">
+        <source>Mobile</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_visible.visible-sm">
+        <source>Tablet</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_visible.visible-md">
+        <source>Desktop</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_visible.visible-lg">
+        <source>Max</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_hidden.hidden-xs">
+        <source>Mobile</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_hidden.hidden-sm">
+        <source>Tablet</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_hidden.hidden-md">
+        <source>Desktop</source>
+      </trans-unit>
+      <trans-unit id="tl_article.article_hidden.hidden-lg">
+        <source>Max</source>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>

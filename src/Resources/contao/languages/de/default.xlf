@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.1">
+    <file datatype="php" original="system/modules/c-customarticles/languages/de/default.php" source-language="en" target-lang="de">
+        <body>
+            <trans-unit id="CTE.newRow">
+                <target>Neue Zeile</target>
+                <source>New Row</source>
+            </trans-unit>
+            <trans-unit id="CTE.newRow.0">
+                <target>Neue Zeile</target>
+                <source>New Row</source>
+            </trans-unit>
+            <trans-unit id="CTE.style.1">
+                <target>Style Elemente</target>
+                <source>Style elements</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

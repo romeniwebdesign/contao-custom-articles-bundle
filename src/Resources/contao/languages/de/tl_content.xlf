@@ -1,0 +1,325 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+	<file datatype="php" original="system/modules/c-customarticles/languages/de/tl_content.php" source-language="en" target-langue="de">
+    <body>
+      <trans-unit id="tl_content.grid_legend">
+        <target>Grid Einstellungen</target>
+        <source>Grid configuration</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_xs.0">
+        <target>Inhalt Breite Mobil</target>
+        <source>Content width mobil</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_xs.1">
+        <target>Inhalt Breite im Mobile-Layout (Default 12).</target>
+        <source>Content width in mobil layout (default 12)</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_sm.0">
+        <target>Inhalt Breite Phablet</target>
+        <source>Content width phablet</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_sm.1">
+        <target>Inhalt Breite im Phablet-Layout.</target>
+        <source>Content width in phablet layout.</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_md.0">
+        <target>Inhalt Breite Tablet</target>
+        <source>Content width tablet</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_md.1">
+        <target>Inhalt Breite im Tablet-Layout.</target>
+        <target>Content width in tablet layout.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_lg.0">
+        <target>Inhalt Breite Desktop</target>
+        <source>Content width desktp</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_lg.1">
+        <target>Inhalt Breite im Desktop-Layout.</target>
+        <target>Content width in desktp layout.</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.grid_xl.0">
+        <target>Inhalt Breite Max</target>
+        <source>Content width max</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_xl.1">
+        <target>Inhalt Breite im Max-Layout.</target>
+        <target>Content width in max layout.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_hidden.0">
+        <target>Verstecke in Layout:</target>
+        <source>Hide in layout:</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_hidden.1">
+        <target>Versteckt diesen Inhalt in dem ausgewählten Layout.</target>
+        <source>Hides this content in the selected layout.</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_visible.0">
+        <target>Zeige nur in Layout:</target>
+        <source>Show only in layout:</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_visible.1">
+        <target>Zeigt diesen inhalt nur im ausgewälten Layout.</target>
+        <source>Show this content only in the selected layout.</source>
+      </trans-unit>
+
+      <trans-unit id="tl_content.grid_visible.d-block d-sm-none">
+        <target>Mobile</target>
+        <source>Mobile</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_visible.d-none d-sm-block d-md-none">
+        <target>Phablet</target>
+        <source>Phablet</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_visible.d-none d-md-block d-lg-none">
+        <target>Tablet</target>
+        <source>Tablet</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_visible.d-none d-lg-block d-xl-none">
+        <target>Desktop</target>
+        <source>Desktop</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_visible.d-none d-xl-block">
+        <target>Max</target>
+        <source>Max</source>
+      </trans-unit>
+
+      <trans-unit id="tl_content.grid_hidden.d-none d-sm-block">
+        <target>Mobile</target>
+        <source>Mobile</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_hidden.d-block d-sm-none d-md-block">
+        <target>Phablet</target>
+        <source>Phablet</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_hidden.d-block d-md-none d-lg-block">
+        <target>Tablet</target>
+        <source>Tablet</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_hidden.d-block d-lg-none d-xl-block">
+        <target>Desktop</target>
+        <source>Desktop</source>
+      </trans-unit>
+      <trans-unit id="tl_content.grid_hidden.d-block d-xl-none">
+        <target>Max</target>
+        <source>Max</source>
+      </trans-unit>
+
+      <trans-unit id="tl_content.grid_order_legend">
+        <target>Grid Sortieren &amp; Offset</target>
+        <source>Grid Order &amp; Offset</source>
+      </trans-unit>
+
+      <trans-unit id="tl_content.pull.-1">
+        <source>-</source>
+        <target>-</target>
+      </trans-unit>
+      <trans-unit id="tl_content.pull_xs.0">
+        <source>Pull on mobil</source>
+        <target>Pull in Mobil</target>
+      </trans-unit>
+      <trans-unit id="tl_content.pull_xs.1">
+        <source>Pulls the Element in the mobil layout</source>
+        <target>Pullt das Element in dem mobil layout</target>
+      </trans-unit>
+      <trans-unit id="tl_content.pull_sm.0">
+        <source>Pull on tablet</source>
+        <target>Pull in Tablet</target>
+      </trans-unit>
+      <trans-unit id="tl_content.pull_sm.1">
+        <source>Pulls the Element in the tablet layout.</source>
+        <target>Pullt das Element in dem tablet layout.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.pull_md.0">
+        <source>Pull on desktop</source>
+        <target>Pull in Desktop</target>
+      </trans-unit>
+      <trans-unit id="tl_content.pull_md.1">
+        <source>Pulls the Element in the desktop layout.</source>
+        <target>Pullt das Element in dem desktop layout.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.pull_lg.0">
+        <source>Pull on max</source>
+        <target>Pull in Max</target>
+      </trans-unit>
+      <trans-unit id="tl_content.pull_lg.1">
+        <source>Pulls the Element in the desktop layout.</source>
+        <target>Pullt das Element in dem desktop layout.</target>
+      </trans-unit>
+
+      <trans-unit id="tl_content.push.-1">
+        <source>-</source>
+        <target>-</target>
+      </trans-unit>
+      <trans-unit id="tl_content.push_xs.0">
+        <source>Push on mobil</source>
+        <target>Push in Mobil</target>
+      </trans-unit>
+      <trans-unit id="tl_content.push_xs.1">
+        <source>Pushes the Element in the mobil layout</source>
+        <target>Pushed das Element in dem mobil layout</target>
+      </trans-unit>
+      <trans-unit id="tl_content.push_sm.0">
+        <source>Push on tablet</source>
+        <target>Push in Tablet</target>
+      </trans-unit>
+      <trans-unit id="tl_content.push_sm.1">
+        <source>Pushes the Element in the tablet layout.</source>
+        <target>Pushed das Element in dem tablet layout.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.push_md.0">
+        <source>Push on desktop</source>
+        <target>Push in Desktop</target>
+      </trans-unit>
+      <trans-unit id="tl_content.push_md.1">
+        <source>Pushes the Element in the desktop layout.</source>
+        <target>Pushed das Element in dem desktop layout.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.push_lg.0">
+        <source>Push on max</source>
+        <target>Push in Max</target>
+      </trans-unit>
+      <trans-unit id="tl_content.push_lg.1">
+        <source>Pushes the Element in the desktop layout.</source>
+        <target>Pushed das Element in dem desktop layout.</target>
+      </trans-unit>
+
+      <trans-unit id="tl_content.offset.-1">
+        <source>-</source>
+        <target>-</target>
+      </trans-unit>
+      <trans-unit id="tl_content.offset_xs.0">
+        <source>Offset on mobil</source>
+        <target>Offset in Mobil</target>
+      </trans-unit>
+      <trans-unit id="tl_content.offset_xs.1">
+        <source>Offsets the Element in the mobil layout</source>
+        <target>Offsetted das Element in dem mobil layout</target>
+      </trans-unit>
+      <trans-unit id="tl_content.offset_sm.0">
+        <source>Offset on phablet</source>
+        <target>Offset in Phablet</target>
+      </trans-unit>
+      <trans-unit id="tl_content.offset_sm.1">
+        <source>Offsets the Element in the phablet layout.</source>
+        <target>Offsetted das Element in dem Phablet layout.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.offset_md.0">
+        <source>Offset on tablet</source>
+        <target>Offset in Tablet</target>
+      </trans-unit>
+      <trans-unit id="tl_content.offset_md.1">
+        <source>Offsets the Element in the tablet layout.</source>
+        <target>Offsetted das Element in dem Tablet layout.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.offset_lg.0">
+        <source>Offset on desktop</source>
+        <target>Offset in Desktop</target>
+      </trans-unit>
+      <trans-unit id="tl_content.offset_lg.1">
+        <source>Offsets the Element in the desktop layout.</source>
+        <target>Offsetted das Element in dem Desktop layout.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.offset_lg.0">
+        <source>Offset on max</source>
+        <target>Offset in Max</target>
+      </trans-unit>
+      <trans-unit id="tl_content.offset_lg.1">
+        <source>Offsets the Element in the max layout.</source>
+        <target>Offsetted das Element in dem Max layout.</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_padding.0">
+        <source>No Padding</source>
+        <target>Kein Padding</target>
+      </trans-unit>
+      <trans-unit id="tl_content.col_padding.1">
+        <source>Remove padding from Element.</source>
+        <target>Padding vom Element entfernen.</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_padding.pl-0">
+        <source>No padding left</source>
+        <target>Kein padding link</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_padding.pr-0">
+        <source>No padding right</source>
+        <target>Kein padding rechts</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_padding.px-0">
+        <source>No padding left/right</source>
+        <target>Kein padding links/rechts</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_margin.0">
+        <source>No Margin</source>
+        <target>Kein Margin</target>
+      </trans-unit>
+      <trans-unit id="tl_content.col_margin.1">
+        <source>Remove margin from Element.</source>
+        <target>Margin von Element entfernen.</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_margin.mt-0">
+        <source>No margin top</source>
+        <target>Kein margin oben</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_margin.mb-0">
+        <source>No margin bottom</source>
+        <target>Kein margin unten</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_margin.my-0">
+        <source>No margin top/bottom</source>
+        <target>Kein margin oben/unten</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_align.0">
+        <source>Horizontal Alignment:</source>
+        <target>Horizontale Ausrichtung:</target>
+      </trans-unit>
+      <trans-unit id="tl_content.col_align.1">
+        <source>How is the Element aligned in the row?</source>
+        <target>Wie ist das Element in der Zeile ausgerichtet?</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_align.float-left">
+        <source>Float Left</source>
+        <target>Float Links</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_align.float-none">
+        <source>Float none</source>
+        <target>Nicht floaten</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_align.mx-auto">
+        <source>Align Center</source>
+        <target>Zentriert</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_align.float-right">
+        <source>Float right</source>
+        <target>Float rechts</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_valign.0">
+        <source>Vertical Alignment:</source>
+        <target>Verticale Ausrichtung:</target>
+      </trans-unit>
+      <trans-unit id="tl_content.col_valign.1">
+        <source>How is the Element aligned vertically in the row?</source>
+        <target>Wie ist das Element vertically in der Zeile ausgerichtet?</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_valign.align-self-start">
+        <source>Align Top</source>
+        <target>Oben</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_valign.align-self-center">
+        <source>Align Center</source>
+        <target>Mittig</target>
+      </trans-unit>
+	  <trans-unit id="tl_content.col_valign.align-self-end">
+        <source>Align Bottom</source>
+        <target>Unten</target>
+      </trans-unit>
+      <trans-unit id="tl_content.lightbox.0">
+        <source>Lighbtox</source>
+        <target>Lightbox</target>
+      </trans-unit>
+      <trans-unit id="tl_content.lightbox.1">
+        <source>Code for grouping Lightbox Elements</source>
+        <target>Code um Lightbox zu Gruppieren</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
