@@ -28,7 +28,7 @@ class ArticleHook extends \System {
 		$layoutID = $objPage->layout;
 		$objLayout = \LayoutModel::findByID($layoutID);
 
-		$template                = new \FrontendTemplate('mod_customarticle');
+		$template                = new \FrontendTemplate('mod_article_custom');
 		$count                   = count($tpl->elements);
 
 		$containertype           = 'container';
@@ -76,7 +76,7 @@ class ArticleHook extends \System {
 
 		$customcss =	".mod_article.section_$tpl->id { ";
 			if(isset($article_width['value']) && $article_width['value'] != ''){
-				if($article_width['value'] == 100  && $article_width['unit'] == "%") {
+				if($article_width['value'] == 100  && preg_match("/%|vw/", $article_width['unit'])) {
 					$containertype = 'container-fluid';
 				}
 				else {
