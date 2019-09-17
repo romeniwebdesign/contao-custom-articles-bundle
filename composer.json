@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Rwd\\ContaoCustomArticlesBundle": "src"
+      "Rwd\\ContaoCustomArticlesBundle\\": "src"
     }
   },
   "extra": {
