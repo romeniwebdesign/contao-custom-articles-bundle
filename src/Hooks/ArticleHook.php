@@ -53,7 +53,7 @@ class ArticleHook extends \System {
 			$tmpclasses = $article->cssID;
 			$article_visible = @unserialize($tpl->article_visible);
 			if ($article_visible === 'b:0;' || $article_visible !== false) {
-				foreach (\Contao\StringUtil::deserialize($tpl->article_hidden) as $key => $value) {
+				foreach (\Contao\StringUtil::deserialize($tpl->article_visible) as $key => $value) {
 					$tmpclasses[1] .= ' ' . $value;
 				}
 			} else {
