@@ -5,8 +5,7 @@
 - Adds options to articles for background images, colors and much more
 
 ## Article Options
-![](https://lh3.googleusercontent.com/IG81uLckYYarr0OAhO0hAazycyDzDzobG74ACI1KZHxEvum2fxfGlGfaig-_Gt3x8EEiHgSr_2o1dq-DkhXM=w1920-h969-rw)
+![custom_article](https://user-images.githubusercontent.com/1358040/65122943-77660b00-d9f2-11e9-974e-c03fa9dfcbed.jpg)
 
 ## Element Options
-
-![](https://lh5.googleusercontent.com/C7Bqe42Zs7LvRMUMOMWquNvo1dBnK8_67Tm9nA9cRHRIYcPCEKYz2fNtU4suwJmLX-tbryyG5HGPh2fd6ht1=w1920-h969-rw)
+![custom_article_element_1](https://user-images.githubusercontent.com/1358040/65122970-86e55400-d9f2-11e9-80f3-57cb6690f81a.jpg)
