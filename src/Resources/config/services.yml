@@ -7,3 +7,6 @@ services:
         Symfony\Component\DependencyInjection\ContainerAwareInterface:
             calls:
                 - ["setContainer", ["@service_container"]]
+    rwd.contao_custom_articles_bundle.hex_to_rgba:
+        class: Rwd\ContaoCustomArticlesBundle\Library\HexToRgba
+        public: true

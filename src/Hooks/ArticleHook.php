@@ -15,6 +15,7 @@
 namespace Rwd\ContaoCustomArticlesBundle\Hooks;
 
 class ArticleHook extends \System {
+
 	/**
 	* getArticle hook
 	*
@@ -24,6 +25,8 @@ class ArticleHook extends \System {
 	*/
 	public function insertCustomTemplate($tpl, $data, $article)
 	{
+		$hextorgba = \Contao\System::getContainer()->get('rwd.contao_custom_articles_bundle.hex_to_rgba');
+
 		global $objPage;
 		$layoutID = $objPage->layout;
 		$objLayout = \LayoutModel::findByID($layoutID);
@@ -89,7 +92,7 @@ class ArticleHook extends \System {
 				$customcss .= "min-height:" . $article_minheight['value'] . $article_minheight['unit'] . " !important;";
 			}
 			if(isset($article_color[0]) && $article_color[0] != ''){
-				$customcss .= "background-color:" . $this->cHex2rgba($article_color[0],$article_color[1]) . " !important;";
+				$customcss .= "background-color:" . $hextorgba->convertColors($article_color[0],$article_color[1]) . " !important;";
 			}
 			if(isset($article_image) && $article_image != ''){
 				$customcss .= "background-image:url('" . $article_image . "') !important;";
@@ -139,7 +142,7 @@ class ArticleHook extends \System {
 		}
 		$customcss .=	".mod_article.section_$tpl->id .section_content { ";
 			if(isset($inner_article_color[0]) && $inner_article_color[0] != ''){
-				$customcss .= "background-color:" . $this->cHex2rgba($inner_article_color[0],$inner_article_color[1]) . " !important;";
+				$customcss .= "background-color:" . $hextorgba->convertColors($inner_article_color[0],$inner_article_color[1]) . " !important;";
 			}
 			if(isset($inner_article_width['value']) && $inner_article_width['value'] != ''){
 				$customcss .= "width:" . $inner_article_width['value'] . $inner_article_width['unit'] . " !important;";
@@ -180,32 +183,6 @@ class ArticleHook extends \System {
 		if ($strName == 'tl_content') {
 			$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = array('tl_content_grid', 'appendGridComponents');
 		}
-	}
-
-	private function cHex2rgba($color, $opacity = false) {
-		$default = 'rgb(0,0,0)';
-		if(empty($color))
-			return $default;
-			if ($color[0] == '#' ) {
-				$color = substr( $color, 1 );
-			}
-			if (strlen($color) == 6) {
-				$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
-			} elseif ( strlen( $color ) == 3 ) {
-				$hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
-			} else {
-				return $default;
-			}
-			$rgb =  array_map('hexdec', $hex);
-			if($opacity){
-				$opacity = $opacity/100;
-				if(abs($opacity) > 1)
-					$opacity = 1.0;
-					$output = 'rgba('.implode(",",$rgb).','.$opacity.')';
-				} else {
-				$output = 'rgb('.implode(",",$rgb).')';
-			}
-		return $output;
 	}
 
 }
