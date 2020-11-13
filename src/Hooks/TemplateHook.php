@@ -33,22 +33,22 @@ class TemplateHook {
 			$classes = '';
 
 			$arrClasses = [
-				'grid_xs'   => 'col-xs-',
+				'grid_xs'   => 'col-',
 				'grid_sm'   => 'col-sm-',
 				'grid_md'   => 'col-md-',
 				'grid_lg'   => 'col-lg-',
 				'grid_xl'   => 'col-xl-',
-				'offset_xs' => 'offset-xs-',
+				'offset_xs' => 'offset-',
 				'offset_sm' => 'offset-sm-',
 				'offset_md' => 'offset-md-',
 				'offset_lg' => 'offset-lg-',
 				'offset_xl' => 'offset-xl-',
-				'order_xs'  => 'order-xs-',
+				'order_xs'  => 'order-',
 				'order_sm'  => 'order-sm-',
 				'order_md'  => 'order-md-',
 				'order_lg'  => 'order-lg-',
 				'order_xl'  => 'order-xl-',
-				'push_xs'   => 'col-xs-push-',
+				'push_xs'   => 'col-push-',
 				'push_sm'   => 'col-sm-push-',
 				'push_md'   => 'col-md-push-',
 				'push_lg'   => 'col-lg-push-'
