@@ -1,12 +1,6 @@
 services:
-    _instanceof:
-        Contao\CoreBundle\Framework\FrameworkAwareInterface:
-            calls:
-                - ["setFramework", ["@contao.framework"]]
-
-        Symfony\Component\DependencyInjection\ContainerAwareInterface:
-            calls:
-                - ["setContainer", ["@service_container"]]
+    _defaults:
+        autoconfigure: true
     rwd.contao_custom_articles_bundle.hex_to_rgba:
         class: Rwd\ContaoCustomArticlesBundle\Library\HexToRgba
         public: true
