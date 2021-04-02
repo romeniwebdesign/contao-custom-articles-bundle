@@ -11,8 +11,6 @@ declare(strict_types=1);
  */
 
 use Contao\Config;
-use Contao\Image;
-use Contao\Input;
 
 /*
  * Add palettes to tl_article
@@ -44,9 +42,6 @@ $GLOBALS['TL_DCA']['tl_article']['fields']['article_image'] = [
     'inputType' => 'text',
     'exclude' => true,
     'eval' => ['filesOnly' => true, 'extensions' => Config::get('validImageTypes'), 'fieldType' => 'radio', 'tl_class' => 'w50 wizard'],
-    'wizard' => [
-        ['tl_customarticle', 'filePicker'],
-    ],
     'sql' => "varchar(255) NOT NULL default ''",
 ];
 
@@ -194,16 +189,3 @@ $GLOBALS['TL_DCA']['tl_article']['fields']['article_hidden'] = [
     'eval' => ['includeBlankOption' => true, 'mandatory' => false, 'maxlength' => 500, 'tl_class' => 'w50', 'multiple' => true, 'chosen' => true],
     'sql' => "varchar(500) NOT NULL default ''",
 ];
-
-class tl_customarticle extends Backend
-{
-    /**
-     * Return the file picker wizard.
-     *
-     * @return string
-     */
-    public function filePicker(DataContainer $dc)
-    {
-        return ' <a href="contao/file.php?do='.Input::get('do').'&amp;table='.$dc->table.'&amp;field='.$dc->field.'&amp;value='.$dc->value.'" title="'.specialchars(str_replace("'", "\\'", $GLOBALS['TL_LANG']['MSC']['filepicker'])).'" onclick="Backend.getScrollOffset();Backend.openModalSelector({\'width\':768,\'title\':\''.specialchars($GLOBALS['TL_LANG']['MOD']['files'][0]).'\',\'url\':this.href,\'id\':\''.$dc->field.'\',\'tag\':\'ctrl_'.$dc->field.('editAll' === Input::get('act') ? '_'.$dc->id : '').'\',\'self\':this});return false">'.Image::getHtml('pickfile.gif', $GLOBALS['TL_LANG']['MSC']['filepicker'], 'style="vertical-align:top;cursor:pointer"').'</a>';
-    }
-}
