@@ -10,15 +10,20 @@ declare(strict_types=1);
  * @license LGPL-3.0-or-later
  */
 
-namespace Rwd\ContaoCustomArticlesBundle\Hooks;
+namespace Rwd\ContaoCustomArticlesBundle\EventListener;
 
+use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\StringUtil;
+use Contao\Template;
 
-class TemplateHook
+/**
+ * @Hook("parseTemplate")
+ */
+class ParseTemplateListener
 {
-    public function insertCustomGrid($objTemplate): void
+    public function __invoke(Template $template): void
     {
-        $templateName = $objTemplate->getName();
+        $templateName = $template->getName();
 
         if (
             '' !== $templateName
@@ -52,53 +57,53 @@ class TemplateHook
             ];
 
             foreach ($arrClasses as $key => $classPart) {
-                if ($objTemplate->$key !== '' && $objTemplate->$key !== -1) {
-                    $classes .= ' '.$classPart.$objTemplate->$key;
+                if ($template->$key !== '' && $template->$key !== -1) {
+                    $classes .= ' '.$classPart.$template->$key;
                 }
             }
 
-            if ('' !== $objTemplate->grid_visible) {
-                $grid_visible = @unserialize($objTemplate->grid_visible);
+            if ('' !== $template->grid_visible) {
+                $grid_visible = @unserialize($template->grid_visible);
 
                 if ('b:0;' === $grid_visible || false !== $grid_visible) {
-                    foreach (StringUtil::deserialize($objTemplate->grid_visible) as $value) {
+                    foreach (StringUtil::deserialize($template->grid_visible) as $value) {
                         $classes .= ' '.$value;
                     }
                 } else {
-                    $classes .= ' '.$objTemplate->grid_visible;
+                    $classes .= ' '.$template->grid_visible;
                 }
             }
 
-            if ('' !== $objTemplate->grid_hidden) {
-                $grid_hidden = @unserialize($objTemplate->grid_hidden);
+            if ('' !== $template->grid_hidden) {
+                $grid_hidden = @unserialize($template->grid_hidden);
 
                 if ('b:0;' === $grid_hidden || false !== $grid_hidden) {
-                    foreach (StringUtil::deserialize($objTemplate->grid_hidden) as $value) {
+                    foreach (StringUtil::deserialize($template->grid_hidden) as $value) {
                         $classes .= ' '.$value;
                     }
                 } else {
-                    $classes .= ' '.$objTemplate->grid_hidden;
+                    $classes .= ' '.$template->grid_hidden;
                 }
             }
 
-            if ($objTemplate->col_padding || '' !== $objTemplate->col_padding) {
-                $classes .= ' '.$objTemplate->col_padding;
+            if ($template->col_padding || '' !== $template->col_padding) {
+                $classes .= ' '.$template->col_padding;
             }
 
-            if ($objTemplate->col_margin || '' !== $objTemplate->col_margin) {
-                $classes .= ' '.$objTemplate->col_margin;
+            if ($template->col_margin || '' !== $template->col_margin) {
+                $classes .= ' '.$template->col_margin;
             }
 
-            if ($objTemplate->col_align || '' !== $objTemplate->col_align) {
-                $classes .= ' '.$objTemplate->col_align;
+            if ($template->col_align || '' !== $template->col_align) {
+                $classes .= ' '.$template->col_align;
             }
 
-            if ($objTemplate->col_valign || '' !== $objTemplate->col_valign) {
-                $classes .= ' '.$objTemplate->col_valign;
+            if ($template->col_valign || '' !== $template->col_valign) {
+                $classes .= ' '.$template->col_valign;
             }
 
             if ('' !== $classes) {
-                $objTemplate->class .= $classes;
+                $template->class .= $classes;
             }
         }
     }

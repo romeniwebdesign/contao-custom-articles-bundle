@@ -10,75 +10,80 @@ declare(strict_types=1);
  * @license LGPL-3.0-or-later
  */
 
-namespace Rwd\ContaoCustomArticlesBundle\Hooks;
+namespace Rwd\ContaoCustomArticlesBundle\EventListener;
 
+use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\FrontendTemplate;
+use Contao\Module;
 use Contao\StringUtil;
-use Contao\System;
 use Rwd\ContaoCustomArticlesBundle\Library\HexToRgba;
 
-class ArticleHook extends System
+/**
+ * @Hook("compileArticle")
+ */
+class CompileArticleListener
 {
     /**
-     * getArticle hook.
-     *
-     * insert custom template when
-     * getArticle hook is called
+     * @var HexToRgba
      */
-    public function insertCustomTemplate($tpl, $data, $article): void
-    {
-        /** @var HexToRgba $hextorgba */
-        $hextorgba = System::getContainer()->get('rwd.contao_custom_articles_bundle.hex_to_rgba');
+    private $hexToRgba;
 
-        $template = new FrontendTemplate('mod_article_custom');
-        $count = \count($tpl->elements);
+    public function __construct(HexToRgba $hexToRgba)
+    {
+        $this->hexToRgba = $hexToRgba;
+    }
+
+    public function __invoke(FrontendTemplate $template, array $data, Module $module): void
+    {
+        $customTemplate = new FrontendTemplate('mod_article_custom');
+        $count = \count($template->elements);
 
         $containertype = 'container';
 
-        $article_color = StringUtil::deserialize($tpl->article_color);
-        $article_width = StringUtil::deserialize($tpl->article_width);
-        $article_minheight = StringUtil::deserialize($tpl->article_minheight);
-        $article_image = $tpl->article_image;
-        $article_image_position = $tpl->article_image_position;
-        $article_image_repeat = $tpl->article_image_repeat;
-        $article_image_cover = $tpl->article_image_cover;
-        $article_image_fixed = $tpl->article_image_fixed;
+        $article_color = StringUtil::deserialize($template->article_color);
+        $article_width = StringUtil::deserialize($template->article_width);
+        $article_minheight = StringUtil::deserialize($template->article_minheight);
+        $article_image = $template->article_image;
+        $article_image_position = $template->article_image_position;
+        $article_image_repeat = $template->article_image_repeat;
+        $article_image_cover = $template->article_image_cover;
+        $article_image_fixed = $template->article_image_fixed;
 
-        $inner_article_width = StringUtil::deserialize($tpl->inner_article_width);
-        $inner_article_space = $tpl->inner_article_space;
-        $inner_article_overflow = $tpl->inner_article_overflow;
-        $inner_article_color = StringUtil::deserialize($tpl->inner_article_color);
-        $inner_article_minheight = StringUtil::deserialize($tpl->inner_article_minheight);
+        $inner_article_width = StringUtil::deserialize($template->inner_article_width);
+        $inner_article_space = $template->inner_article_space;
+        $inner_article_overflow = $template->inner_article_overflow;
+        $inner_article_color = StringUtil::deserialize($template->inner_article_color);
+        $inner_article_minheight = StringUtil::deserialize($template->inner_article_minheight);
 
-        if ('' !== $tpl->article_visible) {
-            $tmpclasses = $article->cssID;
-            $article_visible = @unserialize($tpl->article_visible);
+        if ('' !== $template->article_visible) {
+            $tmpclasses = $module->cssID;
+            $article_visible = @unserialize($template->article_visible);
 
             if ('b:0;' === $article_visible || false !== $article_visible) {
-                foreach (StringUtil::deserialize($tpl->article_visible) as $value) {
+                foreach (StringUtil::deserialize($template->article_visible) as $value) {
                     $tmpclasses[1] .= ' '.$value;
                 }
             } else {
-                $tmpclasses[1] .= ' '.$tpl->article_visible;
+                $tmpclasses[1] .= ' '.$template->article_visible;
             }
-            $article->cssID = $tmpclasses;
+            $module->cssID = $tmpclasses;
         }
 
-        if ('' !== $tpl->article_hidden) {
-            $tmpclasses = $article->cssID;
-            $article_hidden = @unserialize($tpl->article_hidden);
+        if ('' !== $template->article_hidden) {
+            $tmpclasses = $module->cssID;
+            $article_hidden = @unserialize($template->article_hidden);
 
             if ('b:0;' === $article_hidden || false !== $article_hidden) {
-                foreach (StringUtil::deserialize($tpl->article_hidden) as $value) {
+                foreach (StringUtil::deserialize($template->article_hidden) as $value) {
                     $tmpclasses[1] .= ' '.$value;
                 }
             } else {
-                $tmpclasses[1] .= ' '.$tpl->article_hidden;
+                $tmpclasses[1] .= ' '.$template->article_hidden;
             }
-            $article->cssID = $tmpclasses;
+            $module->cssID = $tmpclasses;
         }
 
-        $customcss = ".mod_article.section_$tpl->id { ";
+        $customcss = ".mod_article.section_$template->id { ";
 
         if (isset($article_width['value']) && '' !== $article_width['value']) {
             if (100 === (int) $article_width['value'] && preg_match('/%|vw/', $article_width['unit'])) {
@@ -95,7 +100,7 @@ class ArticleHook extends System
         }
 
         if (isset($article_color[0]) && '' !== $article_color[0]) {
-            $customcss .= 'background-color:'.$hextorgba->convertColors($article_color[0], (float) $article_color[1]).' !important;';
+            $customcss .= 'background-color:'.$this->hexToRgba->convertColors($article_color[0], (float) $article_color[1]).' !important;';
         }
 
         if (isset($article_image) && '' !== $article_image) {
@@ -149,13 +154,13 @@ class ArticleHook extends System
         $customcss .= ' } ';
 
         if (isset($article_minheight['value']) && '' !== $article_minheight['value']) {
-            $customcss .= ".mod_article.section_$tpl->id > * { min-height:inherit; }";
-            $customcss .= ".mod_article.section_$tpl->id > * > * { min-height:inherit; }";
+            $customcss .= ".mod_article.section_$template->id > * { min-height:inherit; }";
+            $customcss .= ".mod_article.section_$template->id > * > * { min-height:inherit; }";
         }
-        $customcss .= ".mod_article.section_$tpl->id .section_content { ";
+        $customcss .= ".mod_article.section_$template->id .section_content { ";
 
         if (isset($inner_article_color[0]) && '' !== $inner_article_color[0]) {
-            $customcss .= 'background-color:'.$hextorgba->convertColors($inner_article_color[0], (float) $inner_article_color[1]).' !important;';
+            $customcss .= 'background-color:'.$this->hexToRgba->convertColors($inner_article_color[0], (float) $inner_article_color[1]).' !important;';
         }
 
         if (isset($inner_article_width['value']) && '' !== $inner_article_width['value']) {
@@ -167,7 +172,7 @@ class ArticleHook extends System
             $customcss .= 'min-height:'.$inner_article_minheight['value'].$inner_article_minheight['unit'].' !important; display:block;';
         }
         $customcss .= ' } ';
-        $customcss .= ".mod_article.section_$tpl->id .section_content > .row { ";
+        $customcss .= ".mod_article.section_$template->id .section_content > .row { ";
 
         if (isset($inner_article_overflow) && '' !== $inner_article_overflow) {
             if ('overflow_hidden' === $inner_article_overflow) {
@@ -179,11 +184,11 @@ class ArticleHook extends System
             }
         }
         $customcss .= ' } ';
-        $tpl->customcss = $customcss;
-        $tpl->customclasses = $tpl->article_margin;
-        $tpl->gridcount = $count;
-        $tpl->containertype = $containertype;
-        $template->setData($tpl->getData());
-        $article->Template = $template;
+        $template->customcss = $customcss;
+        $template->customclasses = $template->article_margin;
+        $template->gridcount = $count;
+        $template->containertype = $containertype;
+        $customTemplate->setData($template->getData());
+        $module->Template = $customTemplate;
     }
 }

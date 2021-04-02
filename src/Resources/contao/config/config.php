@@ -10,17 +10,6 @@ declare(strict_types=1);
  * @license LGPL-3.0-or-later
  */
 
-use Rwd\ContaoCustomArticlesBundle\Hooks\ArticleHook;
-use Rwd\ContaoCustomArticlesBundle\Hooks\TemplateHook;
-
-/*
- * Hooks
- */
-if (TL_MODE === 'FE') {
-    $GLOBALS['TL_HOOKS']['compileArticle'][] = [ArticleHook::class, 'insertCustomTemplate'];
-    $GLOBALS['TL_HOOKS']['parseTemplate'][] = [TemplateHook::class, 'insertCustomGrid'];
-}
-
 /*
  * Content elements
  */
