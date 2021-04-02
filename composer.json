@@ -1,15 +1,15 @@
 {
-  "name":"romeniwebdesign/contao-custom-articles-bundle",
-  "type":"contao-bundle",
-  "description":"Custom Article for Contao Open Source CMS",
+  "name": "romeniwebdesign/contao-custom-articles-bundle",
+  "type": "contao-bundle",
+  "description": "Custom Article for Contao Open Source CMS",
   "license": "LGPL-3.0-or-later",
-  "authors":[
+  "authors": [
     {
-      "name":"Christian Romeni",
-      "homepage":"http://romeni.eu"
+      "name": "Christian Romeni",
+      "homepage": "http://romeni.eu"
     }
   ],
-  "keywords":[
+  "keywords": [
     "contao",
     "articles",
     "style"
@@ -22,14 +22,14 @@
     "symfony/http-kernel": "^4.4 || ^5.1"
   },
   "conflict": {
-      "contao/manager-plugin": "<2.0 || >=3.0"
+    "contao/manager-plugin": "<2.0 || >=3.0"
   },
-	"require-dev": {
+  "require-dev": {
     "contao/manager-plugin": "^2.0",
-    "contao/easy-coding-standard": "^2.0",
+    "contao/easy-coding-standard": "^3.0",
     "phpunit/phpunit": "^8.4",
     "symfony/phpunit-bridge": "^4.4 || ^5.1"
-	},
+  },
   "extra": {
     "contao-manager-plugin": "Rwd\\ContaoCustomArticlesBundle\\ContaoManager\\Plugin"
   },
@@ -38,9 +38,15 @@
       "Rwd\\ContaoCustomArticlesBundle\\": "src"
     }
   },
-	"autoload-dev": {
-		"psr-4": {
-			"Rwd\\ContaoCustomArticlesBundle\\Tests\\": "tests/"
-		}
-	}
+  "autoload-dev": {
+    "psr-4": {
+      "Rwd\\ContaoCustomArticlesBundle\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "ecs": [
+      "vendor/bin/ecs check src/ --fix --ansi",
+      "vendor/bin/ecs check src/ --config ecs_template.php --fix --ansi"
+    ]
+  }
 }
