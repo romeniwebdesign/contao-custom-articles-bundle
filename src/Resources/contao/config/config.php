@@ -1,43 +1,27 @@
 <?php
 
-/**
- * Contao Open Source CMS
+declare(strict_types=1);
+
+/*
+ * This file is part of Custom Article for Contao Open Source CMS.
  *
- * Copyright (C) 2005-2013 Leo Feyer
+ * (c) Christian Romeni
  *
- * @package   customarticle
- * @author    Christian Romeni  <christian@romeni.eu>
- * @link      https://romeni.eu
- * @license   GNU
- * @copyright Romeni WebDesign
+ * @license LGPL-3.0-or-later
  */
 
-if (TL_MODE == 'BE') {
-	$GLOBALS['TL_CSS'][] = '/bundles/contaocustomarticles/assets/extend-backend.css';
-}
+use Rwd\ContaoCustomArticlesBundle\Elements\NewRow;
 
-/**
-* Hooks
-*/
-if (TL_MODE == 'BE') {
-	$GLOBALS['TL_HOOKS']['loadDataContainer'][]		 = array('Rwd\ContaoCustomArticlesBundle\Hooks\ArticleHook', 'appendGridComponentsCallback');
-}
-
-if(TL_MODE == 'FE'){
-	$GLOBALS['TL_HOOKS']['compileArticle'][]		 = array('Rwd\ContaoCustomArticlesBundle\Hooks\ArticleHook', 'insertCustomTemplate');
-	$GLOBALS['TL_HOOKS']['parseTemplate'][]	     = array('Rwd\ContaoCustomArticlesBundle\Hooks\TemplateHook', 'insertCustomGrid');
-}
-
-/**
+/*
  * Content elements
  */
-array_insert($GLOBALS['TL_CTE']['style'], sizeof($GLOBALS['TL_CTE']['slider']), array(
-	'newRow'     => 'Rwd\ContaoCustomArticlesBundle\Elements\NewRow'
-));
+array_insert($GLOBALS['TL_CTE']['style'], count($GLOBALS['TL_CTE']['slider']), [
+    'newRow' => NewRow::class,
+]);
 
-/**
+/*
  * Wrapper elements
  */
-array_insert($GLOBALS['TL_WRAPPERS']['separator'], sizeof($GLOBALS['TL_WRAPPERS']['separator']), array(
-	'NewRow'
-));
+array_insert($GLOBALS['TL_WRAPPERS']['separator'], count($GLOBALS['TL_WRAPPERS']['separator']), [
+    'NewRow',
+]);

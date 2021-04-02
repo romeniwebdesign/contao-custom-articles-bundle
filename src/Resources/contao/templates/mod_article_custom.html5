@@ -21,9 +21,9 @@
 
 <?php else: ?>
 
-  <section class="<?= $this->class; ?> <?= $this->customclasses; ?>section section_<?= $this->id; ?> block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
-    <div class="section_content <?= $this->containertype; ?>">
-      <div class="row cols-<?= $this->gridcount; ?>">
+  <section class="<?= $this->class ?> <?= $this->customclasses ?>section section_<?= $this->id ?> block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
+    <div class="section_content <?= $this->containertype ?>">
+      <div class="row cols-<?= $this->gridcount ?>">
       <?php if ($this->printable): ?>
         <?php $this->block('syndication'); ?>
           <!-- indexer::stop -->
@@ -60,7 +60,6 @@
     </div>
 </section>
 <?php endif; ?>
-<?php if($this->customcss != ''): ?>
-<style><?= $this->customcss; ?></style>
-
+<?php if (!empty($this->customcss)): ?>
+<style><?= $this->customcss ?></style>
 <?php endif; ?>
