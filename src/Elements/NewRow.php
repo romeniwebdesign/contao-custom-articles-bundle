@@ -1,40 +1,39 @@
 <?php
 
-/**
- * Contao Open Source CMS
+declare(strict_types=1);
+
+/*
+ * This file is part of Custom Article for Contao Open Source CMS.
  *
- * Copyright (c) 2005-2017 Leo Feyer
+ * (c) Christian Romeni
  *
- * @license LGPL-3.0+
+ * @license LGPL-3.0-or-later
  */
 
 namespace Rwd\ContaoCustomArticlesBundle\Elements;
 
-/**
- * Divider.
- *
- * @author Leo Feyer <https://github.com/leofeyer>
- */
-class NewRow extends \ContentElement
-{
+use Contao\BackendTemplate;
+use Contao\ContentElement;
 
+class NewRow extends ContentElement
+{
     /**
-     * Template
+     * Template.
+     *
      * @var string
      */
     protected $strTemplate = 'ce_newRow';
 
-
     /**
-     * Generate the content element
+     * Generate the content element.
      */
-    protected function compile()
+    protected function compile(): void
     {
-        if (TL_MODE == 'BE') {
+        if (TL_MODE === 'BE') {
             $this->strTemplate = 'be_wildcard';
 
             /** @var BackendTemplate|object $objTemplate */
-            $objTemplate = new \BackendTemplate($this->strTemplate);
+            $objTemplate = new BackendTemplate($this->strTemplate);
 
             $this->Template = $objTemplate;
         }
