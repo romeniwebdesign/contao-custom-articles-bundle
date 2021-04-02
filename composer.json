@@ -45,8 +45,8 @@
   },
   "scripts": {
     "ecs": [
-      "vendor/bin/ecs check src/ --fix --ansi",
-      "vendor/bin/ecs check src/ --config ecs_template.php --fix --ansi"
+      "vendor/bin/ecs check src/ tests/ --fix --ansi",
+      "vendor/bin/ecs check src/ tests/ --config ecs_template.php --fix --ansi"
     ]
   }
 }
