@@ -13,10 +13,6 @@ declare(strict_types=1);
 use Rwd\ContaoCustomArticlesBundle\Hooks\ArticleHook;
 use Rwd\ContaoCustomArticlesBundle\Hooks\TemplateHook;
 
-if (TL_MODE === 'BE') {
-    $GLOBALS['TL_CSS'][] = '/bundles/contaocustomarticles/assets/extend-backend.css';
-}
-
 /*
  * Hooks
  */
