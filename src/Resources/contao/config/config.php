@@ -10,11 +10,13 @@ declare(strict_types=1);
  * @license LGPL-3.0-or-later
  */
 
+use Rwd\ContaoCustomArticlesBundle\Elements\NewRow;
+
 /*
  * Content elements
  */
 array_insert($GLOBALS['TL_CTE']['style'], count($GLOBALS['TL_CTE']['slider']), [
-    'newRow' => 'Rwd\ContaoCustomArticlesBundle\Elements\NewRow',
+    'newRow' => NewRow::class,
 ]);
 
 /*
