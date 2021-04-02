@@ -268,29 +268,3 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['lightbox'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['newRow'] = '{type_legend},type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
-
-class tl_content_grid extends tl_content
-{
-    /**
-     * Onload callback for tl_content
-     *
-     * Add language field to all content palettes
-     *
-     * @param DataContainer $dc
-     */
-    public function appendGridComponents(DataContainer $dc = null)
-    {
-        $dc->loadDataContainer('tl_page');
-        $dc->loadDataContainer('tl_content');
-
-        // add grid to all palettes
-        foreach ($GLOBALS['TL_DCA']['tl_content']['palettes'] as $key => $value) {
-            // if element is '__selector__' OR 'default'
-            if ($key == '__selector__' || $key == 'default' || $key == 'newRow' || strpos($value, ',grid(?=\{|,|;|$)') !== false) {
-                continue;
-            }
-
-            $GLOBALS['TL_DCA']['tl_content']['palettes'][$key] = $value . ';{grid_legend:hide},grid_xs,grid_sm,grid_md,grid_lg,grid_xl,grid_visible,grid_hidden,col_padding,col_margin,col_align,col_valign;{grid_order_legend:hide},order_xs,order_sm,order_md,order_lg,order_xl,push_xs,push_sm,push_md,push_lg,offset_xs,offset_sm,offset_md,offset_lg,offset_xl';
-        }
-    }
-}

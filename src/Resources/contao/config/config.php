@@ -16,10 +16,6 @@ use Rwd\ContaoCustomArticlesBundle\Hooks\TemplateHook;
 /*
  * Hooks
  */
-if (TL_MODE === 'BE') {
-    $GLOBALS['TL_HOOKS']['loadDataContainer'][] = [ArticleHook::class, 'appendGridComponentsCallback'];
-}
-
 if (TL_MODE === 'FE') {
     $GLOBALS['TL_HOOKS']['compileArticle'][] = [ArticleHook::class, 'insertCustomTemplate'];
     $GLOBALS['TL_HOOKS']['parseTemplate'][] = [TemplateHook::class, 'insertCustomGrid'];

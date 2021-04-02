@@ -186,17 +186,4 @@ class ArticleHook extends System
         $template->setData($tpl->getData());
         $article->Template = $template;
     }
-
-    /**
-     * loadDataContainer hook.
-     *
-     * Add onload_callback definition when loadDataContainer hook is
-     * called to define onload_callback as late as possible
-     */
-    public function appendGridComponentsCallback(string $strName): void
-    {
-        if ('tl_content' === $strName) {
-            $GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = ['tl_content_grid', 'appendGridComponents'];
-        }
-    }
 }
