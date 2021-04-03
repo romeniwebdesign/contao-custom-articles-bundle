@@ -1,5 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of Custom Article for Contao Open Source CMS.
+ *
+ * (c) Christian Romeni
+ *
+ * @license LGPL-3.0-or-later
+ */
+
 namespace Rwd\ContaoCustomArticlesBundle\ContaoManager;
 
 use Contao\CoreBundle\ContaoCoreBundle;
@@ -13,7 +23,7 @@ class Plugin implements BundlePluginInterface
     /**
      * {@inheritdoc}
      */
-    public function getBundles(ParserInterface $parser)
+    public function getBundles(ParserInterface $parser): array
     {
         return [
             BundleConfig::create(ContaoCustomArticlesBundle::class)

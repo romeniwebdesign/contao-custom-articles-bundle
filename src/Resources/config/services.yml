@@ -1,6 +1,8 @@
 services:
     _defaults:
+        autowire: true
         autoconfigure: true
-    rwd.contao_custom_articles_bundle.hex_to_rgba:
-        class: Rwd\ContaoCustomArticlesBundle\Library\HexToRgba
-        public: true
+
+    Rwd\ContaoCustomArticlesBundle\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection,Resources}'

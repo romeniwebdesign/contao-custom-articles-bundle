@@ -1,21 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 /*
- * This file is part of [package name].
+ * This file is part of Custom Article for Contao Open Source CMS.
  *
- * (c) John Doe
+ * (c) Christian Romeni
  *
  * @license LGPL-3.0-or-later
  */
 
 namespace Rwd\ContaoCustomArticlesBundle\Tests;
 
-use Rwd\ContaoCustomArticlesBundle\ContaoCustomArticlesBundle;
 use PHPUnit\Framework\TestCase;
+use Rwd\ContaoCustomArticlesBundle\ContaoCustomArticlesBundle;
 
 class ContaoCustomArticlesBundleTest extends TestCase
 {
-    public function testCanBeInstantiated()
+    public function testCanBeInstantiated(): void
     {
         $bundle = new ContaoCustomArticlesBundle();
 
