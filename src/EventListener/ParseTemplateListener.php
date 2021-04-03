@@ -63,7 +63,7 @@ class ParseTemplateListener
             }
 
             if ('' !== $template->grid_visible) {
-                $grid_visible = @unserialize($template->grid_visible);
+                $grid_visible = @unserialize((string) $template->grid_visible);
 
                 if ('b:0;' === $grid_visible || false !== $grid_visible) {
                     foreach (StringUtil::deserialize($template->grid_visible) as $value) {
@@ -75,7 +75,7 @@ class ParseTemplateListener
             }
 
             if ('' !== $template->grid_hidden) {
-                $grid_hidden = @unserialize($template->grid_hidden);
+                $grid_hidden = @unserialize((string) $template->grid_hidden);
 
                 if ('b:0;' === $grid_hidden || false !== $grid_hidden) {
                     foreach (StringUtil::deserialize($template->grid_hidden) as $value) {
