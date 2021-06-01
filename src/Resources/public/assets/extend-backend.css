@@ -7,6 +7,11 @@
 	float: left;
 }
 
+.w75 {
+	width:calc(75% - 30px);
+	float: left;
+}
+
 .w25 .tl_box,
 .w25 .tl_select,
 .w25 .tl_tbox,
