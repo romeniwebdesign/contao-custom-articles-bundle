@@ -18,7 +18,7 @@ use Contao\DataContainer;
 class ContentListener
 {
     /**
-     * @Callback(table="tl_content", target="config.onload")
+     * @Callback(table="tl_content", target="config.onload", priority=-999)
      */
     public function appendGridComponents(DataContainer $dc): void
     {
