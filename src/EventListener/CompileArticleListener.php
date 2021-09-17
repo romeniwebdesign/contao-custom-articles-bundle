@@ -125,9 +125,9 @@ class CompileArticleListener
 					-ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=$img-uri, sizingMethod='scale') !important;";
 
             if ($article_image_fixed) {
-                $customcss .= 'background-attachment: fixed';
+                $customcss .= 'background-attachment: fixed;';
             } else {
-                $customcss .= 'background-attachment: initial';
+                $customcss .= 'background-attachment: initial;';
             }
         }
 
