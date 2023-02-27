@@ -57,7 +57,7 @@ class ParseTemplateListener
             ];
 
             foreach ($arrClasses as $key => $classPart) {
-                if ($template->$key !== '' && $template->$key !== -1) {
+                if ($template->$key && $template->$key !== '-1') {
                     $classes .= ' '.$classPart.$template->$key;
                 }
             }
