@@ -1,6 +1,7 @@
 {
   "name": "romeniwebdesign/contao-custom-articles-bundle",
   "type": "contao-bundle",
+  "version": "1.1.6"
   "description": "Custom Article for Contao Open Source CMS",
   "license": "LGPL-3.0-or-later",
   "authors": [
