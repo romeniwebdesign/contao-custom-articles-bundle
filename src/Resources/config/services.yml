@@ -7,6 +7,5 @@ services:
         resource: '../../*'
         exclude: '../../{DependencyInjection,Resources}'
 
-    rwd.contao_custom_articles_bundle.hex_to_rgba:
-        class: 'HexToRgba'
+    Rwd\ContaoCustomArticlesBundle\Library\HexToRgba:
         public: true
