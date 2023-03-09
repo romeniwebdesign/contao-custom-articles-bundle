@@ -120,9 +120,7 @@ class CompileArticleListener
 					-webkit-background-size: cover;
 					-moz-background-size: cover;
 					-o-background-size: cover;
-					background-size: cover;
-					filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=$img-uri, sizingMethod='scale');
-					-ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=$img-uri, sizingMethod='scale') !important;";
+					background-size: cover;";
 
             if ($article_image_fixed) {
                 $customcss .= 'background-attachment: fixed;';
