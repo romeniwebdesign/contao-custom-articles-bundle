@@ -11,3 +11,106 @@ services:
         alias: Rwd\ContaoCustomArticlesBundle\Library\HexToRgba
         deprecated: 'The "%alias_id%" alias is deprecated. Do not use it anymore.'
         public: true
+
+    Rwd\ContaoCustomArticlesBundle\Migration\DefaultValueMigrationOrderXS:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\DefaultValueMigrationOrderSM:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\DefaultValueMigrationOrderMD:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\DefaultValueMigrationOrderLG:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\DefaultValueMigrationOrderXL:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\DefaultValueMigrationOffsetXS:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\DefaultValueMigrationOffsetSM:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\DefaultValueMigrationOffsetMD:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\DefaultValueMigrationOffsetLG:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\DefaultValueMigrationOffsetXL:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\GridHiddenToContentHidden:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\GridVisibleToContentVisible:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\GridLGToContentLG:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\GridMDToContentMD:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\GridSMToContentSM:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\GridXLToContentXL:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\GridXSToContentXS:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\GridXXLToContentXXL:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationArticleHiddenLG:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationArticleHiddenMD:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationArticleHiddenSM:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationArticleHiddenXS:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationArticleVisibilityLG:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationArticleVisibilityMD:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationArticleVisibilitySM:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationArticleVisibilityXS:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationContentHiddenLG:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationContentHiddenMD:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationContentHiddenSM:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationContentHiddenXS:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationContentVisibilityLG:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationContentVisibilityMD:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationContentVisibilitySM:
+        tags:
+            - { name: contao.migration, priotiry: 0 }
+    Rwd\ContaoCustomArticlesBundle\Migration\ValueMigrationContentVisibilityXS:
+        tags:
+            - { name: contao.migration, priotiry: 0 }

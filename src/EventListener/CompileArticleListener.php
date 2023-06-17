@@ -36,7 +36,6 @@ class CompileArticleListener
     public function __invoke(FrontendTemplate $template, array $data, Module $module): void
     {
         $customTemplate = new FrontendTemplate('mod_article_custom');
-        $count = \count($template->elements);
 
         $containertype = 'container';
 
@@ -186,7 +185,6 @@ class CompileArticleListener
         $customcss .= ' } ';
         $template->customcss = $customcss;
         $template->customclasses = $template->article_margin;
-        $template->gridcount = $count;
         $template->containertype = $containertype;
         $customTemplate->setData($template->getData());
         $module->Template = $customTemplate;

@@ -35,11 +35,11 @@ class ParseTemplateListener
             $classes = '';
 
             $arrClasses = [
-                'grid_xs' => 'col-',
-                'grid_sm' => 'col-sm-',
-                'grid_md' => 'col-md-',
-                'grid_lg' => 'col-lg-',
-                'grid_xl' => 'col-xl-',
+                'size_xs' => 'col-',
+                'size_sm' => 'col-sm-',
+                'size_md' => 'col-md-',
+                'size_lg' => 'col-lg-',
+                'size_xl' => 'col-xl-',
                 'offset_xs' => 'offset-',
                 'offset_sm' => 'offset-sm-',
                 'offset_md' => 'offset-md-',
@@ -57,37 +57,44 @@ class ParseTemplateListener
             ];
 
             foreach ($arrClasses as $key => $classPart) {
-                if ($template->$key !== '' && $template->$key !== -1) {
+                if ($template->$key && $template->$key !== '') {
                     $classes .= ' '.$classPart.$template->$key;
                 }
             }
 
-            if ('' !== $template->grid_visible) {
-                $grid_visible = @unserialize((string) $template->grid_visible);
+            if ('' !== $template->content_visible) {
+                $content_visible = @unserialize((string) $template->content_visible);
 
-                if ('b:0;' === $grid_visible || false !== $grid_visible) {
-                    foreach (StringUtil::deserialize($template->grid_visible) as $value) {
+                if ('b:0;' === $content_visible || false !== $content_visible) {
+                    foreach (StringUtil::deserialize($template->content_visible) as $value) {
                         $classes .= ' '.$value;
                     }
                 } else {
-                    $classes .= ' '.$template->grid_visible;
+                    $classes .= ' '.$template->content_visible;
                 }
             }
 
-            if ('' !== $template->grid_hidden) {
-                $grid_hidden = @unserialize((string) $template->grid_hidden);
+            if ('' !== $template->content_hidden) {
+                $content_hidden = @unserialize((string) $template->content_hidden);
 
-                if ('b:0;' === $grid_hidden || false !== $grid_hidden) {
-                    foreach (StringUtil::deserialize($template->grid_hidden) as $value) {
+                if ('b:0;' === $content_hidden || false !== $content_hidden) {
+                    foreach (StringUtil::deserialize($template->content_hidden) as $value) {
                         $classes .= ' '.$value;
                     }
                 } else {
-                    $classes .= ' '.$template->grid_hidden;
+                    $classes .= ' '.$template->content_hidden;
                 }
             }
 
             if ($template->col_padding || '' !== $template->col_padding) {
-                $classes .= ' '.$template->col_padding;
+                $col_padding = @unserialize((string) $template->col_padding);
+                if ('b:0;' === $col_padding || false !== $col_padding) {
+                    foreach (StringUtil::deserialize($template->col_padding) as $value) {
+                        $classes .= ' '.$value;
+                    }
+                } else {
+                    $classes .= ' '.$template->col_padding;
+                }
             }
 
             if ($template->col_margin || '' !== $template->col_margin) {
