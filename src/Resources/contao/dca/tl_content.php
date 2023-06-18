@@ -216,50 +216,20 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['col_padding'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_content']['col_padding'],
     'inputType' => 'select',
     'exclude' => true,
-    'options' => [
-        'pt-0',
-        'pb-0',
-        'ps-0',
-        'pe-0',
-        'px-0',
-        'py-0',
-        'p-0',
-        'pt-auto',
-        'pb-auto',
-        'ps-auto',
-        'pe-auto',
-        'px-auto',
-        'py-auto',
-        'p-auto',
-    ],
+    'options_callback' => array('tl_custom_content', 'space_options'),
     'reference' => &$GLOBALS['TL_LANG']['tl_content']['col_padding'],
     'eval' => ['includeBlankOption' => true, 'mandatory' => false, 'maxlength' => 255, 'tl_class' => 'w25', 'multiple' => true, 'chosen' => true],
-    'sql' => 'varchar(32) default NULL',
+    'sql' => 'varchar(512) default NULL',
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['col_margin'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_content']['col_margin'],
     'inputType' => 'select',
     'exclude' => true,
-    'options' => [
-        'mt-0',
-        'mb-0',
-        'ms-0',
-        'me-0',
-        'mx-0',
-        'my-0',
-        'm-0',
-        'mt-auto',
-        'mb-auto',
-        'ms-auto',
-        'me-auto',
-        'mx-auto',
-        'my-auto',
-        'm-auto',
-    ],
+    'options_callback' => array('tl_custom_content', 'space_options'),
     'reference' => &$GLOBALS['TL_LANG']['tl_content']['col_margin'],
     'eval' => ['includeBlankOption' => true, 'mandatory' => false, 'maxlength' => 255, 'tl_class' => 'w25', 'multiple' => true, 'chosen' => true],
-    'sql' => 'varchar(32) default NULL',
+    'sql' => 'varchar(512) default NULL',
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['col_align'] = [
@@ -310,6 +280,33 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['lightbox'] = [
 $GLOBALS['TL_DCA']['tl_content']['palettes']['newRow'] = '{type_legend},type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop';
 
 class tl_custom_content extends Backend {
+
+    private $sides, $sizes, $breakpoints;
+
+    public function __construct() {
+        $this->sides = array(
+            '' => '',
+            't' => 'top',
+            'b' => 'bottom',
+            's' => 'start',
+            'e' => 'end',
+            'x' => 'left-right',
+            'y' => 'top-bottom'
+        );
+
+        $this->sizes = array(
+            'auto' => 'auto',
+            '0' => '0',
+            '1' => '1',
+            '2' => '2',
+            '3' => '3',
+            '4' => '4',
+            '5' => '5'
+        );
+
+        $this->breakpoints = array('xs', 'sm', 'md', 'lg', 'xl', 'xxl');
+    }
+    
     public function col_options(){
         $range = array();
         foreach(range(1, 12) as $number) {
@@ -332,5 +329,60 @@ class tl_custom_content extends Backend {
         }
         $range['last'] = "order-last";
         return $range;
+    }
+    public function space_options(DataContainer $dc){
+
+        $field = $dc->field;
+
+        // Determine the options based on the field name
+        if ($field === 'col_padding') {
+            $options = $this->generateSpaceOptions('padding');
+        } elseif ($field === 'col_margin') {
+            $options = $this->generateSpaceOptions('margin');
+        } else {
+            return false;
+        }
+
+        return $options;
+    }
+
+    public function generateSpaceOptions($property){
+
+        $options = array();
+
+        foreach ($this->sides as $sideKey => $sideValue) {
+            foreach ($this->sizes as $sizeKey => $sizeValue) {
+                $classKey = '';
+                $classValue = '';
+
+                if ($sideKey !== '' || $sizeKey !== '') {
+                    if ($sideKey === '') {
+                        $classKey = $property[0] . '-' . $sizeKey;
+                        $classValue = $property  . '-' . $sizeValue;
+                    } else  {
+                        $classKey = $property[0] . $sideKey . '-' . $sizeKey;
+                        $classValue = $property . '-' . $sideValue . '-' . $sizeValue;
+                    }
+                    $options[$classKey] = $classValue;
+                }
+
+                foreach ($this->breakpoints as $breakpoint) {
+                    if ($sideKey !== '' || $sizeKey !== '') {
+                        if ($sideKey === '') {
+                            $classKey = $property[0] . '-' . $breakpoint . '-' . $sizeKey;
+                            $classValue = $property . '-' . $breakpoint . '-' . $sizeValue;
+                        } else {
+                            $classKey = $property[0] . $sideKey . '-' . $breakpoint . '-' . $sizeKey;
+                            $classValue = $property . '-' . $sideValue . '-' . $breakpoint . '-' . $sizeValue;
+                        }
+                        // $classKey = $property[0] . $sideKey . '-' . $breakpoint . '-' . $sizeKey;
+                        // $classValue = $property . '-' . $sideValue . '-' . $breakpoint . '-' . $sizeValue;
+                        $options[$classKey] = $classValue;
+                    }
+                }
+            }
+        }
+
+        return $options;
     }
 }
