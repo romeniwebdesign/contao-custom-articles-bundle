@@ -39,9 +39,6 @@
     "symfony/dom-crawler": "^5.4 || ^6.0",
     "symfony/test-pack": "^1.0"
   },
-  "suggest": {
-    "twbs/bootstrap": "^5.0"
-  },
   "extra": {
     "contao-manager-plugin": "Rwd\\ContaoCustomArticlesBundle\\ContaoManager\\Plugin"
   },

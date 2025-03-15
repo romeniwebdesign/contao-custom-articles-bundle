@@ -1,0 +1,45 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of Custom Article for Contao Open Source CMS.
+ *
+ * (c) Christian Romeni
+ *
+ * @license LGPL-3.0-or-later
+ */
+
+namespace Rwd\ContaoCustomArticlesBundle\EventSubscriber;
+
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\KernelEvents;
+use Twig\Loader\FilesystemLoader;
+
+class TwigTemplateSubscriber implements EventSubscriberInterface
+{
+    private FilesystemLoader $twigLoader;
+    private string $projectDir;
+
+    public function __construct(FilesystemLoader $twigLoader, string $projectDir)
+    {
+        $this->twigLoader = $twigLoader;
+        $this->projectDir = $projectDir;
+    }
+
+    public static function getSubscribedEvents(): array
+    {
+        return [KernelEvents::REQUEST => 'onKernelRequest'];
+    }
+
+    public function onKernelRequest(RequestEvent $event): void
+    {
+        if (!$event->isMainRequest()) {
+            return;
+        }
+
+        // Register our Twig namespace
+        $this->twigLoader->addPath($this->projectDir . '/vendor/romeniwebdesign/contao-custom-articles-bundle/src/Resources/views', 'RwdContaoCustomArticles');
+    }
+}

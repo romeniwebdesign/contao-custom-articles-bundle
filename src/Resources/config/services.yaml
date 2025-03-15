@@ -33,6 +33,5 @@ services:
         shared: false
         
     # Register Twig namespace for our templates
-    contao.twig.template_loader:
-        calls:
-            - [addPath, ['%kernel.project_dir%/src/Resources/views', 'RwdContaoCustomArticles']]
+    Rwd\ContaoCustomArticlesBundle\EventSubscriber\TwigTemplateSubscriber:
+        tags: ['kernel.event_subscriber']
