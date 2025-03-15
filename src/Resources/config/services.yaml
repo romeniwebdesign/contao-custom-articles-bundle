@@ -17,6 +17,7 @@ services:
         arguments:
             $config: '%contao_custom_articles.config%'
             $enableBootstrap5: '%contao_custom_articles.enable_bootstrap5%'
+            $includeBootstrapCdn: '%contao_custom_articles.include_bootstrap_cdn%'
             $enableCssGrid: '%contao_custom_articles.enable_css_grid%'
             $enableFlexbox: '%contao_custom_articles.enable_flexbox%'
             $enableDarkMode: '%contao_custom_articles.enable_dark_mode%'

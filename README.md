@@ -32,6 +32,7 @@ The bundle can be configured in your `config/config.yaml` file:
 # Default configuration
 contao_custom_articles:
     enable_bootstrap5: true
+    include_bootstrap_cdn: true
     enable_css_grid: true
     enable_flexbox: true
     enable_dark_mode: false
@@ -48,6 +49,12 @@ contao_custom_articles:
             xl: 1200
             xxl: 1400
 ```
+
+### Bootstrap CDN
+
+By default, the bundle automatically includes Bootstrap 5 CSS and JS from a CDN (jsDelivr) when `enable_bootstrap5` and `include_bootstrap_cdn` are both set to `true`. This makes it easy to use Bootstrap 5 without having to manually include it in your layout.
+
+If you prefer to include Bootstrap yourself or are already including it in your layout, you can disable the CDN by setting `include_bootstrap_cdn` to `false`.
 
 ## Usage
 

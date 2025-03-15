@@ -27,6 +27,7 @@ class ContaoCustomArticlesExtension extends Extension
         // Store the configuration in the container for later use
         $container->setParameter('contao_custom_articles.config', $config);
         $container->setParameter('contao_custom_articles.enable_bootstrap5', $config['enable_bootstrap5']);
+        $container->setParameter('contao_custom_articles.include_bootstrap_cdn', $config['include_bootstrap_cdn']);
         $container->setParameter('contao_custom_articles.enable_css_grid', $config['enable_css_grid']);
         $container->setParameter('contao_custom_articles.enable_flexbox', $config['enable_flexbox']);
         $container->setParameter('contao_custom_articles.enable_dark_mode', $config['enable_dark_mode']);

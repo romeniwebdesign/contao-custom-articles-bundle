@@ -32,6 +32,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved multilingual support
 - Refactored code for better maintainability
 
+### Added
+- Added automatic Bootstrap 5 CDN integration (CSS and JS)
+- Added configuration option to control Bootstrap CDN inclusion
+
 ## [1.1.6] - 2023-02-28
 ### Fixed
 - Fixed a faulty if statement causing way to many css classes

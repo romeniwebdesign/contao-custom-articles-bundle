@@ -19,6 +19,7 @@ class CustomArticlesConfig
 {
     private array $config;
     private bool $enableBootstrap5;
+    private bool $includeBootstrapCdn;
     private bool $enableCssGrid;
     private bool $enableFlexbox;
     private bool $enableDarkMode;
@@ -28,6 +29,7 @@ class CustomArticlesConfig
     public function __construct(
         array $config,
         bool $enableBootstrap5,
+        bool $includeBootstrapCdn,
         bool $enableCssGrid,
         bool $enableFlexbox,
         bool $enableDarkMode,
@@ -36,6 +38,7 @@ class CustomArticlesConfig
     ) {
         $this->config = $config;
         $this->enableBootstrap5 = $enableBootstrap5;
+        $this->includeBootstrapCdn = $includeBootstrapCdn;
         $this->enableCssGrid = $enableCssGrid;
         $this->enableFlexbox = $enableFlexbox;
         $this->enableDarkMode = $enableDarkMode;
@@ -46,6 +49,11 @@ class CustomArticlesConfig
     public function isBootstrap5Enabled(): bool
     {
         return $this->enableBootstrap5;
+    }
+    
+    public function isBootstrapCdnEnabled(): bool
+    {
+        return $this->includeBootstrapCdn;
     }
 
     public function isCssGridEnabled(): bool
