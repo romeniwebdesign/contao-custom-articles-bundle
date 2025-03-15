@@ -21,7 +21,7 @@ use Contao\System;
  */
 class NewRow extends ContentElement
 {
-    protected string $strTemplate = 'ce_newRow';
+    protected $strTemplate = 'ce_newRow';
 
     protected function compile(): void
     {

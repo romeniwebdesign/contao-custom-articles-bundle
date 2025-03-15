@@ -15,13 +15,13 @@ use Rwd\ContaoCustomArticlesBundle\Elements\NewRow;
 /*
  * Content elements
  */
-Contao\ArrayUtil::arrayInsert($GLOBALS['TL_CTE']['style'], count($GLOBALS['TL_CTE']['slider']), [
+Contao\ArrayUtil::arrayInsert($GLOBALS['TL_CTE']['style'], is_array($GLOBALS['TL_CTE']['slider']) ? count($GLOBALS['TL_CTE']['slider']) : 0, [
     'newRow' => NewRow::class,
 ]);
 
 /*
  * Wrapper elements
  */
-Contao\ArrayUtil::arrayInsert($GLOBALS['TL_WRAPPERS']['separator'], count($GLOBALS['TL_WRAPPERS']['separator']), [
+Contao\ArrayUtil::arrayInsert($GLOBALS['TL_WRAPPERS']['separator'], is_array($GLOBALS['TL_WRAPPERS']['separator']) ? count($GLOBALS['TL_WRAPPERS']['separator']) : 0, [
     'NewRow',
 ]);
