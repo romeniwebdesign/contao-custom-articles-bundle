@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2025-03-15
+### Changed
+- Updated PHP requirement to ^8.1
+- Updated Contao requirement to ^5.0
+- Updated dev dependencies to newer versions
+- Replaced annotations with PHP 8 attributes
+- Used constructor property promotion
+- Added proper type hints
+- Improved documentation
+- Renamed services.yml to services.yaml
+- Improved service configuration
+- Updated dependency injection
+- Fixed asset path naming convention
+- Removed redundant docblocks
+- Improved class structure
+- Enhanced backend detection in content elements
+- Added proper type declarations
+
 ## [1.1.6] - 2023-02-28
 ### Fixed
 - Fixed a faulty if statement causing way to many css classes
