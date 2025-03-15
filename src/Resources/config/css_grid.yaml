@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    # CSS Grid specific services
+    Rwd\ContaoCustomArticlesBundle\CssGrid\CssGridClassGenerator:
+        public: true

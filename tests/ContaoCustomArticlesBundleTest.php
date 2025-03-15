@@ -21,6 +21,6 @@ class ContaoCustomArticlesBundleTest extends TestCase
     {
         $bundle = new ContaoCustomArticlesBundle();
 
-        $this->assertInstanceOf('Rwd\ContaoCustomArticlesBundle\ContaoCustomArticlesBundle', $bundle);
+        $this->assertInstanceOf(ContaoCustomArticlesBundle::class, $bundle);
     }
 }

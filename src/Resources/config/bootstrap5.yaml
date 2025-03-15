@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    # Bootstrap 5 specific services
+    Rwd\ContaoCustomArticlesBundle\Bootstrap\BootstrapClassGenerator:
+        public: true

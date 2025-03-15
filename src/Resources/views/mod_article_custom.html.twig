@@ -1,0 +1,64 @@
+{% if teaser_only %}
+
+  {% block alias %}
+    <article class="{{ class }} block"{{ css_id }}{% if style %} style="{{ style }}"{% endif %}>
+      <div class="ce_text block">
+        <h2>{{ headline }}</h2>
+        <div class="teaser">
+          {{ teaser|raw }}
+          <p class="more"><a href="{{ href }}" title="{{ read_more }}">{{ more }} <span class="invisible">{{ headline }}</span></a></p>
+        </div>
+      </div>
+    </article>
+  {% endblock %}
+
+{% elseif no_markup %}
+
+  {% block content %}
+    {{ elements|join|raw }}
+  {% endblock %}
+
+{% else %}
+
+  <section class="{{ class }} {{ customclasses }}section section_{{ id }} block"{{ css_id }}{% if style %} style="{{ style }}"{% endif %}{{ attributes|default('')|raw }}>
+    <div class="section_content {{ containertype }}">
+      <div class="row cols-{{ gridcount }}">
+      {% if printable %}
+        {% block syndication %}
+          <!-- indexer::stop -->
+          <div class="syndication">
+            {% if print_button %}
+              <a href="{{ print }}" class="print" rel="nofollow" title="{{ print_title }}" onclick="window.print();return false">{{ contao_image('assets/contao/images/print.svg')|raw }}</a>
+            {% endif %}
+            {% if pdf_button %}
+              <a href="{{ href }}" class="pdf" rel="nofollow" title="{{ pdf_title }}">{{ contao_image('assets/contao/images/pdf.svg')|raw }}</a>
+            {% endif %}
+            {% if facebook_button %}
+              <a href="{{ path('contao_frontend_share', {p: 'facebook', u: enc_url}) }}" class="facebook" rel="nofollow" title="{{ facebook_title }}" onclick="var w=window.open(this.href,'','width=640,height=380,modal=yes,left=100,top=50,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');w.opener=null;return false">{{ contao_image('assets/contao/images/facebook.svg')|raw }}</a>
+            {% endif %}
+            {% if twitter_button %}
+              <a href="{{ path('contao_frontend_share', {p: 'twitter', u: enc_url, t: enc_title}) }}" class="twitter" rel="nofollow" title="{{ twitter_title }}" onclick="var w=window.open(this.href,'','width=640,height=380,modal=yes,left=100,top=50,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');w.opener=null;return false">{{ contao_image('assets/contao/images/twitter.svg')|raw }}</a>
+            {% endif %}
+          </div>
+          <!-- indexer::continue -->
+        {% endblock %}
+      {% endif %}
+
+      {% block content %}
+        {{ elements|join|raw }}
+      {% endblock %}
+
+      {% if backlink %}
+        {% block backlink %}
+          <!-- indexer::stop -->
+          <p class="back"><a href="{{ backlink }}" title="{{ back }}">{{ back }}</a></p>
+          <!-- indexer::continue -->
+        {% endblock %}
+      {% endif %}
+    </div>
+    </div>
+</section>
+{% endif %}
+{% if customcss is not empty %}
+<style>{{ customcss|raw }}</style>
+{% endif %}
