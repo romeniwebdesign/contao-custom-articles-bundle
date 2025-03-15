@@ -19,11 +19,9 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 class KernelRequestSubscriber implements EventSubscriberInterface
 {
-    protected $scopeMatcher;
-
-    public function __construct(ScopeMatcher $scopeMatcher)
-    {
-        $this->scopeMatcher = $scopeMatcher;
+    public function __construct(
+        private readonly ScopeMatcher $scopeMatcher
+    ) {
     }
 
     public static function getSubscribedEvents(): array
@@ -36,7 +34,7 @@ class KernelRequestSubscriber implements EventSubscriberInterface
         $request = $e->getRequest();
 
         if ($this->scopeMatcher->isBackendRequest($request)) {
-            $GLOBALS['TL_CSS'][] = '/bundles/contaocustomarticles/assets/extend-backend.css|static';
+            $GLOBALS['TL_CSS'][] = '/bundles/contao_custom_articles/assets/extend-backend.css|static';
         }
     }
 }

@@ -12,22 +12,18 @@ declare(strict_types=1);
 
 namespace Rwd\ContaoCustomArticlesBundle\EventListener;
 
+use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\FrontendTemplate;
 use Contao\Module;
 use Contao\StringUtil;
 use Rwd\ContaoCustomArticlesBundle\Library\HexToRgba;
 
-/**
- * @Hook("compileArticle")
- */
+#[Hook('compileArticle')]
 class CompileArticleListener
 {
-    /**
-     * @var HexToRgba
-     */
-    private $hexToRgba;
-
+    private HexToRgba $hexToRgba;
+    
     public function __construct(HexToRgba $hexToRgba)
     {
         $this->hexToRgba = $hexToRgba;

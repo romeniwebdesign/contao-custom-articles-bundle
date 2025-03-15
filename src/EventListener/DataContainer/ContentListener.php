@@ -12,14 +12,12 @@ declare(strict_types=1);
 
 namespace Rwd\ContaoCustomArticlesBundle\EventListener\DataContainer;
 
-use Contao\CoreBundle\ServiceAnnotation\Callback;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 use Contao\DataContainer;
 
 class ContentListener
 {
-    /**
-     * @Callback(table="tl_content", target="config.onload", priority=-999)
-     */
+    #[AsCallback(table: 'tl_content', target: 'config.onload', priority: -999)]
     public function appendGridComponents(DataContainer $dc): void
     {
         $dc::loadDataContainer('tl_page');

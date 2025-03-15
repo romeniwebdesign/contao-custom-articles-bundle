@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Rwd\ContaoCustomArticlesBundle\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection,Resources,ContaoManager}'
+
+    # Make the HexToRgba service public as it's used directly
+    Rwd\ContaoCustomArticlesBundle\Library\HexToRgba:
+        public: true

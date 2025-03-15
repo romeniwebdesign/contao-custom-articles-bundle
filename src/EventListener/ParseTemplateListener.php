@@ -16,9 +16,7 @@ use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\StringUtil;
 use Contao\Template;
 
-/**
- * @Hook("parseTemplate")
- */
+#[Hook('parseTemplate')]
 class ParseTemplateListener
 {
     public function __invoke(Template $template): void

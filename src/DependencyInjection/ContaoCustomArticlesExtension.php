@@ -19,9 +19,6 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 class ContaoCustomArticlesExtension extends Extension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader(
@@ -29,6 +26,6 @@ class ContaoCustomArticlesExtension extends Extension
             new FileLocator(__DIR__.'/../Resources/config')
         );
 
-        $loader->load('services.yml');
+        $loader->load('services.yaml');
     }
 }

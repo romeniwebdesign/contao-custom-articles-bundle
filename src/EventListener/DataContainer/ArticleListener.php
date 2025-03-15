@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Rwd\ContaoCustomArticlesBundle\EventListener\DataContainer;
 
-use Contao\CoreBundle\ServiceAnnotation\Callback;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 use Contao\DataContainer;
 use Contao\Image;
 use Contao\Input;
@@ -20,9 +20,7 @@ use Contao\StringUtil;
 
 class ArticleListener
 {
-    /**
-     * @Callback(table="tl_article", target="fields.article_image.wizard")
-     */
+    #[AsCallback(table: 'tl_article', target: 'fields.article_image.wizard')]
     public function generateFilePickerWidget(DataContainer $dc): string
     {
         $href = 'contao/file.php?do='.Input::get('do').'&amp;table='.$dc->table.'&amp;field='.$dc->field.'&amp;value='.$dc->value.'';

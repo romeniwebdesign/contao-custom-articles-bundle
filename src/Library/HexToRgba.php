@@ -12,8 +12,17 @@ declare(strict_types=1);
 
 namespace Rwd\ContaoCustomArticlesBundle\Library;
 
+/**
+ * Utility class to convert HEX color values to RGBA.
+ */
 class HexToRgba
 {
+    /**
+     * Converts a hexadecimal color value to RGBA format.
+     *
+     * @param string     $color   The hexadecimal color value (with or without #)
+     * @param float|null $opacity The opacity value (0-100)
+     */
     public function convertColors(string $color, ?float $opacity = null): string
     {
         $default = 'rgba(0,0,0,0)';

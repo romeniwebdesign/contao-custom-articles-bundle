@@ -14,28 +14,20 @@ namespace Rwd\ContaoCustomArticlesBundle\Elements;
 
 use Contao\BackendTemplate;
 use Contao\ContentElement;
+use Contao\System;
 
+/**
+ * Content element "new row" to create Bootstrap row breaks.
+ */
 class NewRow extends ContentElement
 {
-    /**
-     * Template.
-     *
-     * @var string
-     */
-    protected $strTemplate = 'ce_newRow';
+    protected string $strTemplate = 'ce_newRow';
 
-    /**
-     * Generate the content element.
-     */
     protected function compile(): void
     {
-        if (TL_MODE === 'BE') {
+        if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest(System::getContainer()->get('request_stack')->getCurrentRequest() ?? System::getContainer()->get('request_stack')->getMainRequest())) {
             $this->strTemplate = 'be_wildcard';
-
-            /** @var BackendTemplate|object $objTemplate */
-            $objTemplate = new BackendTemplate($this->strTemplate);
-
-            $this->Template = $objTemplate;
+            $this->Template = new BackendTemplate($this->strTemplate);
         }
     }
 }

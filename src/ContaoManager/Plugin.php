@@ -21,19 +21,14 @@ use Rwd\ContaoCustomArticlesBundle\ContaoCustomArticlesBundle;
 
 class Plugin implements BundlePluginInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getBundles(ParserInterface $parser): array
     {
         return [
             BundleConfig::create(ContaoCustomArticlesBundle::class)
-                ->setLoadAfter(
-                    [
-                        ContaoCoreBundle::class,
-                        RockSolidCustomElementsBundle::class,
-                    ]
-                ),
+                ->setLoadAfter([
+                    ContaoCoreBundle::class,
+                    RockSolidCustomElementsBundle::class,
+                ]),
         ];
     }
 }
