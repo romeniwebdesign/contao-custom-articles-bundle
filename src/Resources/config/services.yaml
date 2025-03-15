@@ -6,8 +6,32 @@ services:
 
     Rwd\ContaoCustomArticlesBundle\:
         resource: '../../*'
-        exclude: '../../{DependencyInjection,Resources,ContaoManager}'
+        exclude: '../../{DependencyInjection,Resources,ContaoManager,Config,Template}'
 
     # Make the HexToRgba service public as it's used directly
     Rwd\ContaoCustomArticlesBundle\Library\HexToRgba:
         public: true
+        
+    # Configuration service
+    Rwd\ContaoCustomArticlesBundle\Config\CustomArticlesConfig:
+        arguments:
+            $config: '%contao_custom_articles.config%'
+            $enableBootstrap5: '%contao_custom_articles.enable_bootstrap5%'
+            $enableCssGrid: '%contao_custom_articles.enable_css_grid%'
+            $enableFlexbox: '%contao_custom_articles.enable_flexbox%'
+            $enableDarkMode: '%contao_custom_articles.enable_dark_mode%'
+            $spacing: '%contao_custom_articles.spacing%'
+            $responsive: '%contao_custom_articles.responsive%'
+        public: true
+        
+    # Template services
+    Rwd\ContaoCustomArticlesBundle\Template\TemplateRegistry:
+        public: true
+        
+    Rwd\ContaoCustomArticlesBundle\Template\TwigTemplateProxy:
+        shared: false
+        
+    # Register Twig namespace for our templates
+    contao.twig.template_loader:
+        calls:
+            - [addPath, ['%kernel.project_dir%/src/Resources/views', 'RwdContaoCustomArticles']]
