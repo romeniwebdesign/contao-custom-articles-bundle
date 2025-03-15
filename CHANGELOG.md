@@ -4,19 +4,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [3.0.0] - 2025-03-15
-### Changed
-- Updated to Bootstrap 5 support
-- Modernized CSS features with CSS Grid and Flexbox utilities
-- Improved accessibility with ARIA attributes
-- Added comprehensive documentation
-- Added unit and functional tests
-- Added Twig templates as alternatives to PHP templates
-- Added bundle configuration options
-- Enhanced responsive features
-- Improved multilingual support
-- Refactored code for better maintainability
-
 ## [2.0.0] - 2025-03-15
 ### Changed
 - Updated PHP requirement to ^8.1
@@ -34,6 +21,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved class structure
 - Enhanced backend detection in content elements
 - Added proper type declarations
+- Added Bootstrap 5 support
+- Modernized CSS features with CSS Grid and Flexbox utilities
+- Improved accessibility with ARIA attributes
+- Added comprehensive documentation
+- Added unit and functional tests
+- Added Twig templates as alternatives to PHP templates
+- Added bundle configuration options
+- Enhanced responsive features
+- Improved multilingual support
+- Refactored code for better maintainability
 
 ## [1.1.6] - 2023-02-28
 ### Fixed
