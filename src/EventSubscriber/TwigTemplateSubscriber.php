@@ -40,9 +40,20 @@ class TwigTemplateSubscriber implements EventSubscriberInterface
         }
 
         // Register our Twig namespace
-        $path = $this->projectDir . '/romeniwebdesign/contao-custom-articles-bundle/src/Resources/views';
-        if (file_exists($path)) {
-            $this->twigLoader->addPath($path, 'RwdContaoCustomArticles');
+        $paths = [
+            // Check in vendor directory (standard installation)
+            $this->projectDir . '/vendor/romeniwebdesign/contao-custom-articles-bundle/src/Resources/views',
+            // Check in bundle directory (development installation)
+            $this->projectDir . '/bundles/contaocustomarticles/src/Resources/views',
+            // Check directly in the bundle's Resources/views directory
+            __DIR__ . '/../Resources/views',
+        ];
+
+        foreach ($paths as $path) {
+            if (file_exists($path)) {
+                $this->twigLoader->addPath($path, 'RwdContaoCustomArticles');
+                break; // Use the first path that exists
+            }
         }
     }
 }

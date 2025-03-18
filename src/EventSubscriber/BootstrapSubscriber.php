@@ -24,6 +24,10 @@ class BootstrapSubscriber implements EventSubscriberInterface
     private const BOOTSTRAP_CSS_LOCAL = 'bundles/contaocustomarticles/assets/bootstrap/bootstrap.min.css';
     private const BOOTSTRAP_JS_LOCAL = 'bundles/contaocustomarticles/assets/bootstrap/bootstrap.bundle.min.js';
 
+    // CDN paths to Bootstrap files
+    private const BOOTSTRAP_CSS_CDN = 'cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
+    private const BOOTSTRAP_JS_CDN = 'cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
+
     public function __construct(
         private readonly ScopeMatcher $scopeMatcher,
         private readonly CustomArticlesConfig $config
@@ -40,14 +44,22 @@ class BootstrapSubscriber implements EventSubscriberInterface
         $request = $e->getRequest();
 
         // Only add Bootstrap in frontend requests and if Bootstrap 5 is enabled
-        if (!$this->scopeMatcher->isBackendRequest($request) && 
+        if (!$this->scopeMatcher->isBackendRequest($request) &&
             $this->config->isBootstrap5Enabled()) {
-            
-            // Add Bootstrap CSS from local file
-            $GLOBALS['TL_CSS'][] = self::BOOTSTRAP_CSS_LOCAL . '|static';
-            
-            // Add Bootstrap JS from local file
-            $GLOBALS['TL_JAVASCRIPT'][] = self::BOOTSTRAP_JS_LOCAL . '|static';
+
+            if ($this->config->isBootstrapCdnEnabled()) {
+                // Add Bootstrap CSS from CDN using Contao's proper method
+                $GLOBALS['TL_HEAD'][] = '<link rel="stylesheet" href="https://' . self::BOOTSTRAP_CSS_CDN . '">';
+
+                // Add Bootstrap JS from CDN using Contao's proper method
+                $GLOBALS['TL_BODY'][] = '<script src="https://' . self::BOOTSTRAP_JS_CDN . '"></script>';
+            } else {
+                // Add Bootstrap CSS from local file
+                $GLOBALS['TL_CSS'][] = self::BOOTSTRAP_CSS_LOCAL . '|static';
+
+                // Add Bootstrap JS from local file
+                $GLOBALS['TL_JAVASCRIPT'][] = self::BOOTSTRAP_JS_LOCAL . '|static';
+            }
         }
     }
 }

@@ -30,9 +30,9 @@ class CompileArticleListener
     private CustomArticlesConfig $config;
     private BootstrapClassGenerator $bootstrapClassGenerator;
     private CssGridClassGenerator $cssGridClassGenerator;
-    
+
     private TemplateRegistry $templateRegistry;
-    
+
     public function __construct(
         HexToRgba $hexToRgba,
         CustomArticlesConfig $config,
@@ -54,7 +54,7 @@ class CompileArticleListener
 
         // Extract article options
         $options = $this->extractArticleOptions($template);
-        
+
         // Determine container type based on configuration
         $containertype = $this->determineContainerType($options);
 
@@ -63,14 +63,14 @@ class CompileArticleListener
 
         // Generate custom CSS
         $customcss = $this->generateCustomCss($template, $options);
-        
+
         // Add accessibility attributes
         $this->addAccessibilityAttributes($template, $module);
-        
+
         // We don't need to process content elements here anymore
         // The standard Contao template system will handle this
         // We just need to make sure the article template has the right classes
-        
+
         // Process content elements to add Bootstrap grid classes
         if ($this->config->isBootstrap5Enabled() && !empty($template->elements)) {
             foreach ($template->elements as $key => $element) {
@@ -90,30 +90,30 @@ class CompileArticleListener
                 if (isset($element->grid_xl) && !empty($element->grid_xl)) {
                     $element->class .= ' col-xl-' . $element->grid_xl;
                 }
-                
+
                 // Update the element in the template
                 $template->elements[$key] = $element;
             }
         }
-        
+
         // Set template data
         $template->customcss = $customcss;
         $template->customclasses = $template->article_margin;
         $template->gridcount = $count;
         $template->containertype = $containertype;
-        
+
         // Add element_css_classes for Twig templates in Contao 5.x
         $template->element_css_classes = $template->customclasses;
-        
+
         // If dark mode is enabled, add the class
         if ($this->config->isDarkModeEnabled()) {
             $template->class .= ' ' . $this->bootstrapClassGenerator->generateDarkModeClass();
         }
-        
+
         $customTemplate->setData($template->getData());
         $module->Template = $customTemplate;
     }
-    
+
     /**
      * Extract article options from the template.
      */
@@ -135,7 +135,7 @@ class CompileArticleListener
             'inner_article_minheight' => StringUtil::deserialize($template->inner_article_minheight),
         ];
     }
-    
+
     /**
      * Determine container type based on configuration.
      */
@@ -144,17 +144,17 @@ class CompileArticleListener
         if ($this->config->isBootstrap5Enabled()) {
             return $this->bootstrapClassGenerator->generateContainerClass($options);
         }
-        
+
         // Default container type logic
         if (isset($options['article_width']['value']) && '' !== $options['article_width']['value']) {
             if (100 === (int) $options['article_width']['value'] && preg_match('/%|vw/', $options['article_width']['unit'])) {
                 return 'container-fluid';
             }
         }
-        
+
         return 'container';
     }
-    
+
     /**
      * Process visibility classes.
      */
@@ -262,7 +262,7 @@ class CompileArticleListener
             $module->cssID = $tmpclasses;
         }
     }
-    
+
     /**
      * Generate custom CSS.
      */
@@ -281,7 +281,7 @@ class CompileArticleListener
         $inner_article_overflow = $options['inner_article_overflow'];
         $inner_article_color = $options['inner_article_color'];
         $inner_article_minheight = $options['inner_article_minheight'];
-        
+
         $customcss = ".mod_article.section_$template->id { ";
 
         // Article width
@@ -337,7 +337,7 @@ class CompileArticleListener
         // Article spacing
         if (isset($inner_article_space) && '' !== $inner_article_space) {
             $defaultSpacing = $this->config->getDefaultSpacing();
-            
+
             if ('no_spaceing' === $inner_article_space) {
                 $customcss .= 'padding-bottom:0 !important;';
                 $customcss .= 'padding-top:0 !important;';
@@ -364,7 +364,7 @@ class CompileArticleListener
             $customcss .= ".mod_article.section_$template->id > * { min-height:inherit; }";
             $customcss .= ".mod_article.section_$template->id > * > * { min-height:inherit; }";
         }
-        
+
         // Section content styles
         $customcss .= ".mod_article.section_$template->id .section_content { ";
 
@@ -383,9 +383,9 @@ class CompileArticleListener
         if (isset($inner_article_minheight['value']) && '' !== $inner_article_minheight['value']) {
             $customcss .= 'min-height:'.$inner_article_minheight['value'].$inner_article_minheight['unit'].' !important; display:block;';
         }
-        
+
         $customcss .= ' } ';
-        
+
         // Row styles
         $customcss .= ".mod_article.section_$template->id .section_content > .row { ";
 
@@ -399,33 +399,33 @@ class CompileArticleListener
                 $customcss .= 'overflow:visible !important;';
             }
         }
-        
+
         $customcss .= ' } ';
-        
+
         // Add CSS Grid styles if enabled
         if ($this->config->isCssGridEnabled()) {
             $customcss .= ".mod_article.section_$template->id .css-grid-container { ";
             $customcss .= $this->cssGridClassGenerator->generateGridContainerStyles($options);
             $customcss .= ' } ';
         }
-        
+
         // Add dark mode styles if enabled
         if ($this->config->isDarkModeEnabled()) {
             $customcss .= ".dark-mode .mod_article.section_$template->id { ";
             $customcss .= 'color: #fff;';
             $customcss .= 'background-color: #333;';
             $customcss .= ' } ';
-            
+
             if (isset($inner_article_color[0]) && '' !== $inner_article_color[0]) {
                 $customcss .= ".dark-mode .mod_article.section_$template->id .section_content { ";
                 $customcss .= 'background-color:'.$this->hexToRgba->convertColors('#333333', (float) $inner_article_color[1]).' !important;';
                 $customcss .= ' } ';
             }
         }
-        
+
         return $customcss;
     }
-    
+
     /**
      * Add accessibility attributes.
      */
@@ -435,129 +435,11 @@ class CompileArticleListener
         if (!isset($module->attributes) || false === strpos($module->attributes, 'role=')) {
             $module->attributes = ($module->attributes ?? '') . ' role="region"';
         }
-        
+
         // Add aria-label with article title if available
         if (!empty($template->headline)) {
             $module->attributes = ($module->attributes ?? '') . ' aria-labelledby="article-' . $template->id . '"';
         }
     }
-    
-    /**
-     * Extract element options into an array.
-     */
-    private function extractElementOptions(object $element): array
-    {
-        $options = [];
-        
-        // Grid options
-        $gridOptions = ['grid_xs', 'grid_sm', 'grid_md', 'grid_lg', 'grid_xl'];
-        foreach ($gridOptions as $option) {
-            if (isset($element->$option)) {
-                $options[$option] = $element->$option;
-            }
-        }
-        
-        // Offset options
-        $offsetOptions = ['offset_xs', 'offset_sm', 'offset_md', 'offset_lg', 'offset_xl'];
-        foreach ($offsetOptions as $option) {
-            if (isset($element->$option)) {
-                $options[$option] = $element->$option;
-            }
-        }
-        
-        // Order options
-        $orderOptions = ['order_xs', 'order_sm', 'order_md', 'order_lg', 'order_xl'];
-        foreach ($orderOptions as $option) {
-            if (isset($element->$option)) {
-                $options[$option] = $element->$option;
-            }
-        }
-        
-        // Push options (legacy)
-        $pushOptions = ['push_xs', 'push_sm', 'push_md', 'push_lg'];
-        foreach ($pushOptions as $option) {
-            if (isset($element->$option)) {
-                $options[$option] = $element->$option;
-            }
-        }
-        
-        // Visibility options
-        if (isset($element->grid_visible) && '' !== $element->grid_visible) {
-            $grid_visible = @unserialize((string) $element->grid_visible);
-            
-            if ('b:0;' === $grid_visible || false !== $grid_visible) {
-                $options['grid_visible'] = StringUtil::deserialize($element->grid_visible);
-            } else {
-                $options['grid_visible'] = [$element->grid_visible];
-            }
-        }
-        
-        if (isset($element->grid_hidden) && '' !== $element->grid_hidden) {
-            $grid_hidden = @unserialize((string) $element->grid_hidden);
-            
-            if ('b:0;' === $grid_hidden || false !== $grid_hidden) {
-                $options['grid_hidden'] = StringUtil::deserialize($element->grid_hidden);
-            } else {
-                $options['grid_hidden'] = [$element->grid_hidden];
-            }
-        }
-        
-        // Alignment options
-        if (isset($element->col_padding) && ('' !== $element->col_padding)) {
-            $options['col_padding'] = $element->col_padding;
-        }
-        
-        if (isset($element->col_margin) && ('' !== $element->col_margin)) {
-            $options['col_margin'] = $element->col_margin;
-        }
-        
-        if (isset($element->col_align) && ('' !== $element->col_align)) {
-            $options['col_align'] = $element->col_align;
-        }
-        
-        if (isset($element->col_valign) && ('' !== $element->col_valign)) {
-            $options['col_valign'] = $element->col_valign;
-        }
-        
-        return $options;
-    }
-    
-    /**
-     * Add ARIA attributes for accessibility to an element.
-     */
-    private function addElementAccessibilityAttributes(object $element, array $options): void
-    {
-        // Add role attribute if not present
-        if (!isset($element->attributes) || false === strpos($element->attributes, 'role=')) {
-            $role = 'region';
-            
-            // Determine appropriate role based on template name
-            if (isset($element->getName) && is_callable([$element, 'getName'])) {
-                $templateName = $element->getName();
-                
-                if (strpos($templateName, 'ce_text') === 0) {
-                    $role = 'article';
-                } elseif (strpos($templateName, 'ce_headline') === 0) {
-                    $role = 'heading';
-                } elseif (strpos($templateName, 'ce_image') === 0) {
-                    $role = 'img';
-                } elseif (strpos($templateName, 'ce_gallery') === 0) {
-                    $role = 'group';
-                } elseif (strpos($templateName, 'ce_list') === 0) {
-                    $role = 'list';
-                } elseif (strpos($templateName, 'ce_table') === 0) {
-                    $role = 'table';
-                } elseif (strpos($templateName, 'ce_form') === 0) {
-                    $role = 'form';
-                }
-            }
-            
-            $element->attributes = ($element->attributes ?? '') . ' role="' . $role . '"';
-        }
-        
-        // Add aria-hidden for hidden elements
-        if (isset($options['grid_hidden']) && !empty($options['grid_hidden'])) {
-            $element->attributes = ($element->attributes ?? '') . ' aria-hidden="true"';
-        }
-    }
+
 }
