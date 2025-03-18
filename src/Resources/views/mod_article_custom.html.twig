@@ -20,7 +20,7 @@
 
 {% else %}
 
-  <section class="{{ class }} {{ customclasses }}section section_{{ id }} block"{{ css_id }}{% if style %} style="{{ style }}"{% endif %}{{ attributes|default('')|raw }}>
+  <section class="{{ class }} {{ customclasses }} {{ element_css_classes|default('') }} section section_{{ id }} block"{{ css_id }}{% if style %} style="{{ style }}"{% endif %}{{ attributes|default('')|raw }}>
     <div class="section_content {{ containertype }}">
       <div class="row cols-{{ gridcount }}">
       {% if printable %}

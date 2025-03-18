@@ -15,7 +15,7 @@ use Rwd\ContaoCustomArticlesBundle\Elements\NewRow;
 /*
  * Content elements
  */
-Contao\ArrayUtil::arrayInsert($GLOBALS['TL_CTE']['style'], isset($GLOBALS['TL_CTE']['slider']) && is_array($GLOBALS['TL_CTE']['slider']) ? count($GLOBALS['TL_CTE']['slider']) : 0, [
+Contao\ArrayUtil::arrayInsert($GLOBALS['TL_CTE']['style'], isset($GLOBALS['TL_CTE']['style']) && is_array($GLOBALS['TL_CTE']['style']) ? count($GLOBALS['TL_CTE']['style']) : 0, [
     'newRow' => NewRow::class,
 ]);
 

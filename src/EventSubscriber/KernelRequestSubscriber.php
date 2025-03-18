@@ -34,7 +34,7 @@ class KernelRequestSubscriber implements EventSubscriberInterface
         $request = $e->getRequest();
 
         if ($this->scopeMatcher->isBackendRequest($request)) {
-            $GLOBALS['TL_CSS'][] = '/bundles/contao_custom_articles/assets/extend-backend.css|static';
+            $GLOBALS['TL_CSS'][] = '/bundles/contaocustomarticles/assets/extend-backend.css|static';
         }
     }
 }

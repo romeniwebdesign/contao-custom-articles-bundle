@@ -34,4 +34,32 @@ services:
         
     # Register Twig namespace for our templates
     Rwd\ContaoCustomArticlesBundle\EventSubscriber\TwigTemplateSubscriber:
+        arguments:
+            $projectDir: '%kernel.project_dir%'
         tags: ['kernel.event_subscriber']
+        
+    # Register Bootstrap subscriber
+    Rwd\ContaoCustomArticlesBundle\EventSubscriber\BootstrapSubscriber:
+        tags: ['kernel.event_subscriber']
+        
+    # Alias for Twig Loader
+    Twig\Loader\FilesystemLoader: '@twig.loader.native_filesystem'
+    
+    # Explicitly register the CompileArticleListener
+    Rwd\ContaoCustomArticlesBundle\EventListener\CompileArticleListener:
+        public: true
+        tags:
+            - { name: 'contao.hook', hook: 'compileArticle', priority: 0 }
+            
+    # Explicitly register the GetContentElementListener
+    Rwd\ContaoCustomArticlesBundle\EventListener\GetContentElementListener:
+        public: true
+        tags:
+            - { name: 'contao.hook', hook: 'getContentElement', priority: 0 }
+            
+    # The ParseTemplateListener is no longer used in Contao 5.x as the parseTemplate hook is deprecated
+    # Functionality has been moved to GetContentElementListener
+    # Rwd\ContaoCustomArticlesBundle\EventListener\ParseTemplateListener:
+    #     public: true
+    #     tags:
+    #         - { name: 'contao.hook', hook: 'parseTemplate', priority: 0 }

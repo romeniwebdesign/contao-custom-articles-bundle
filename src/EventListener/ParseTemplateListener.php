@@ -75,6 +75,17 @@ class ParseTemplateListener
             // Add ARIA attributes for accessibility
             $this->addAccessibilityAttributes($template, $options);
 
+            // Always add debug class with grid values
+            $debugClass = ' debug-template-' . $templateName;
+            foreach ($options as $key => $value) {
+                if (in_array($key, ['grid_xs', 'grid_sm', 'grid_md', 'grid_lg', 'grid_xl']) && !empty($value)) {
+                    $debugClass .= ' debug-' . $key . '-' . $value;
+                }
+            }
+            
+            // Always add the debug class
+            $template->class .= $debugClass;
+            
             if ('' !== $classes) {
                 $template->class .= $classes;
             }

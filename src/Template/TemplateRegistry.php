@@ -30,7 +30,7 @@ class TemplateRegistry
     private CustomArticlesConfig $config;
     private array $twigTemplates = [
         'mod_article_custom' => '@RwdContaoCustomArticles/mod_article_custom.html.twig',
-        'ce_newRow' => '@RwdContaoCustomArticles/ce_newRow.html.twig',
+        'ce_newRow' => '@RwdContaoCustomArticles/ce_newRow.html.twig'
     ];
 
     public function __construct(
