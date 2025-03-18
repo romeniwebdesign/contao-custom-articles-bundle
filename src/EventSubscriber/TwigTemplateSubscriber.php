@@ -19,13 +19,10 @@ use Twig\Loader\FilesystemLoader;
 
 class TwigTemplateSubscriber implements EventSubscriberInterface
 {
-    private FilesystemLoader $twigLoader;
-    private string $projectDir;
-
-    public function __construct(FilesystemLoader $twigLoader, string $projectDir)
-    {
-        $this->twigLoader = $twigLoader;
-        $this->projectDir = $projectDir;
+    public function __construct(
+        private readonly FilesystemLoader $twigLoader,
+        private readonly string $projectDir
+    ) {
     }
 
     public static function getSubscribedEvents(): array

@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace Rwd\ContaoCustomArticlesBundle\EventListener;
 
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\CoreBundle\Framework\ContaoFramework;
-use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\FrontendTemplate;
 use Contao\Module;
 use Contao\StringUtil;
@@ -23,28 +23,16 @@ use Rwd\ContaoCustomArticlesBundle\CssGrid\CssGridClassGenerator;
 use Rwd\ContaoCustomArticlesBundle\Library\HexToRgba;
 use Rwd\ContaoCustomArticlesBundle\Template\TemplateRegistry;
 
-#[Hook('compileArticle')]
+#[AsHook('compileArticle')]
 class CompileArticleListener
 {
-    private HexToRgba $hexToRgba;
-    private CustomArticlesConfig $config;
-    private BootstrapClassGenerator $bootstrapClassGenerator;
-    private CssGridClassGenerator $cssGridClassGenerator;
-
-    private TemplateRegistry $templateRegistry;
-
     public function __construct(
-        HexToRgba $hexToRgba,
-        CustomArticlesConfig $config,
-        BootstrapClassGenerator $bootstrapClassGenerator,
-        CssGridClassGenerator $cssGridClassGenerator,
-        TemplateRegistry $templateRegistry
+        private readonly HexToRgba $hexToRgba,
+        private readonly CustomArticlesConfig $config,
+        private readonly BootstrapClassGenerator $bootstrapClassGenerator,
+        private readonly CssGridClassGenerator $cssGridClassGenerator,
+        private readonly TemplateRegistry $templateRegistry
     ) {
-        $this->hexToRgba = $hexToRgba;
-        $this->config = $config;
-        $this->bootstrapClassGenerator = $bootstrapClassGenerator;
-        $this->cssGridClassGenerator = $cssGridClassGenerator;
-        $this->templateRegistry = $templateRegistry;
     }
 
     public function __invoke(FrontendTemplate $template, array $data, Module $module): void
@@ -163,10 +151,10 @@ class CompileArticleListener
         // Process article_visible
         if ('' !== $template->article_visible) {
             $tmpclasses = $module->cssID;
-            $article_visible = @unserialize($template->article_visible);
+            $visibleValues = $this->safeDeserialize($template->article_visible);
 
-            if ('b:0;' === $article_visible || false !== $article_visible) {
-                foreach (StringUtil::deserialize($template->article_visible) as $value) {
+            if (is_array($visibleValues)) {
+                foreach ($visibleValues as $value) {
                     // Convert Bootstrap 4 classes to Bootstrap 5 if enabled
                     if ($this->config->isBootstrap5Enabled() && in_array($value, ['visible-xs', 'visible-sm', 'visible-md', 'visible-lg'])) {
                         switch ($value) {
@@ -214,10 +202,10 @@ class CompileArticleListener
         // Process article_hidden
         if ('' !== $template->article_hidden) {
             $tmpclasses = $module->cssID;
-            $article_hidden = @unserialize($template->article_hidden);
+            $hiddenValues = $this->safeDeserialize($template->article_hidden);
 
-            if ('b:0;' === $article_hidden || false !== $article_hidden) {
-                foreach (StringUtil::deserialize($template->article_hidden) as $value) {
+            if (is_array($hiddenValues)) {
+                foreach ($hiddenValues as $value) {
                     // Convert Bootstrap 4 classes to Bootstrap 5 if enabled
                     if ($this->config->isBootstrap5Enabled() && in_array($value, ['hidden-xs', 'hidden-sm', 'hidden-md', 'hidden-lg'])) {
                         switch ($value) {
@@ -424,6 +412,23 @@ class CompileArticleListener
         }
 
         return $customcss;
+    }
+
+    /**
+     * Safely deserialize a value without using error suppression.
+     */
+    private function safeDeserialize(mixed $value): array|string
+    {
+        if (empty($value)) {
+            return [];
+        }
+
+        try {
+            $result = StringUtil::deserialize($value);
+            return is_array($result) ? $result : [$value];
+        } catch (\Exception $e) {
+            return [$value];
+        }
     }
 
     /**

@@ -17,40 +17,23 @@ namespace Rwd\ContaoCustomArticlesBundle\Config;
  */
 class CustomArticlesConfig
 {
-    private array $config;
-    private bool $enableBootstrap5;
-    private bool $includeBootstrapCdn;
-    private bool $enableCssGrid;
-    private bool $enableFlexbox;
-    private bool $enableDarkMode;
-    private array $spacing;
-    private array $responsive;
-
     public function __construct(
-        array $config,
-        bool $enableBootstrap5,
-        bool $includeBootstrapCdn,
-        bool $enableCssGrid,
-        bool $enableFlexbox,
-        bool $enableDarkMode,
-        array $spacing,
-        array $responsive
+        private readonly array $config,
+        private readonly bool $enableBootstrap5,
+        private readonly bool $includeBootstrapCdn,
+        private readonly bool $enableCssGrid,
+        private readonly bool $enableFlexbox,
+        private readonly bool $enableDarkMode,
+        private readonly array $spacing,
+        private readonly array $responsive
     ) {
-        $this->config = $config;
-        $this->enableBootstrap5 = $enableBootstrap5;
-        $this->includeBootstrapCdn = $includeBootstrapCdn;
-        $this->enableCssGrid = $enableCssGrid;
-        $this->enableFlexbox = $enableFlexbox;
-        $this->enableDarkMode = $enableDarkMode;
-        $this->spacing = $spacing;
-        $this->responsive = $responsive;
     }
 
     public function isBootstrap5Enabled(): bool
     {
         return $this->enableBootstrap5;
     }
-    
+
     public function isBootstrapCdnEnabled(): bool
     {
         return $this->includeBootstrapCdn;
