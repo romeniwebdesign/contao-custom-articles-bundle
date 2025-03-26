@@ -1,49 +1,50 @@
 {
-  "name": "romeniwebdesign/contao-custom-articles-bundle",
-  "type": "contao-bundle",
-  "description": "Custom Article for Contao Open Source CMS",
-  "license": "LGPL-3.0-or-later",
-  "authors": [
-    {
-      "name": "Christian Romeni",
-      "homepage": "http://romeni.eu"
-    }
-  ],
-  "keywords": [
-    "contao",
-    "articles",
-    "style"
-  ],
-  "require": {
-    "php": "^7.2 || ^8.0",
-    "contao/core-bundle": "^4.9 || ^5.0"
-  },
-  "conflict": {
-    "contao/manager-plugin": "<2.0 || >=3.0"
-  },
-  "require-dev": {
-    "contao/manager-plugin": "^2.0",
-    "contao/easy-coding-standard": "^3.0",
-    "phpunit/phpunit": "^8.4",
-    "symfony/phpunit-bridge": "^4.4 || ^5.1"
-  },
-  "extra": {
-    "contao-manager-plugin": "Rwd\\ContaoCustomArticlesBundle\\ContaoManager\\Plugin"
-  },
-  "autoload": {
-    "psr-4": {
-      "Rwd\\ContaoCustomArticlesBundle\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Rwd\\ContaoCustomArticlesBundle\\Tests\\": "tests/"
-    }
-  },
-  "scripts": {
-    "ecs": [
-      "vendor/bin/ecs check src/ tests/ --fix --ansi",
-      "vendor/bin/ecs check src/ tests/ --config ecs_template.php --fix --ansi"
-    ]
-  }
+    "name": "romeniwebdesign/contao-custom-articles-bundle",
+    "type": "contao-bundle",
+    "description": "Custom Article for Contao Open Source CMS",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Christian Romeni",
+            "homepage": "http://romeni.eu"
+        }
+    ],
+    "keywords": [
+        "contao",
+        "articles",
+        "style"
+    ],
+    "require": {
+        "php": "^7.2 || ^8.0",
+        "contao/core-bundle": "^4.9 || ^5.0"
+    },
+    "conflict": {
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "^2.0",
+        "contao/easy-coding-standard": "^3.0",
+        "phpunit/phpunit": "^8.4",
+        "symfony/phpunit-bridge": "^4.4 || ^5.1"
+    },
+    "extra": {
+        "contao-manager-plugin": "Rwd\\ContaoCustomArticlesBundle\\ContaoManager\\Plugin"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rwd\\ContaoCustomArticlesBundle\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rwd\\ContaoCustomArticlesBundle\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "ecs": [
+            "vendor/bin/ecs check src/ tests/ --fix --ansi",
+            "vendor/bin/ecs check src/ tests/ --config ecs_template.php --fix --ansi"
+        ]
+    },
+    "version": "2.0.0"
 }
