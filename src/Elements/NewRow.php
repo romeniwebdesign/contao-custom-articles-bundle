@@ -14,6 +14,7 @@ namespace Rwd\ContaoCustomArticlesBundle\Elements;
 
 use Contao\BackendTemplate;
 use Contao\ContentElement;
+use Contao\System;
 
 class NewRow extends ContentElement
 {
@@ -29,7 +30,10 @@ class NewRow extends ContentElement
      */
     protected function compile(): void
     {
-        if (TL_MODE === 'BE') {
+        $request = System::getContainer()->get('request_stack')->getCurrentRequest();
+
+        if ($request && System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request))
+        {
             $this->strTemplate = 'be_wildcard';
 
             /** @var BackendTemplate|object $objTemplate */
