@@ -50,7 +50,7 @@
     {% endif %}
 
 
-    {#
+    {# Orignal code
     if ('' !== $template->grid_visible) {
           $grid_visible = @unserialize((string) $template->grid_visible);
 
@@ -64,6 +64,7 @@
       }
     #}
 
+    {# ToDo: Fix array handling #}
     {% if data["grid_hidden"] != '' %}
         {% set grid_hidden = data["grid_hidden"]|deserialize %}
         {% dump(data["grid_hidden"]) %}
@@ -76,6 +77,7 @@
         {% endif %}
     {% endif %}
 
+    {# ToDo: Fix array handling #}
     {% if data["grid_visible"] != '' %}
         {% set grid_visible = data["grid_visible"]|deserialize %}
         {% dump(data["grid_visible"]) %}
